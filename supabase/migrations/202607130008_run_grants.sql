@@ -156,7 +156,7 @@ begin
       'plan_hash', p_plan_hash,
       'approval_id', v_approval_id,
       'expires_at', p_expires_at
-    ), v_expires_at + interval '365 days', v_now
+    ), p_expires_at + interval '365 days', v_now
   );
 
   return jsonb_build_object(
@@ -262,6 +262,7 @@ grant select, insert, update on public.session_grants to service_role;
 grant select on public.devices, public.device_keys, public.device_pairing_challenges to service_role;
 grant insert on public.devices, public.device_keys, public.device_pairing_challenges to service_role;
 grant update on public.devices, public.device_pairing_challenges to service_role;
+grant insert on public.execution_runs to service_role;
 
 comment on column public.session_grants.used_at is 'One-time consumption marker; a consumed grant cannot be replayed.';
 comment on function public.issue_run_grant(text, uuid, text, text, text, jsonb, timestamptz, timestamptz, text, text) is 'Service-only atomic issuance of a short-lived, approved, target-bound run grant.';
