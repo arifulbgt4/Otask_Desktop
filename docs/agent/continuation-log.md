@@ -37,3 +37,9 @@
 - Local contract validation passes with seven fixtures; remote CI is pending.
 - Next action: inspect branch checks, then close P01-002 or fix the schema
   boundary before selecting P01-003.
+
+## 2026-07-13 — P01-002 complete
+
+- All six required checks for `4385afb` passed, including the Supabase local
+  start/reset/stop job.
+- P01-002 is done; state now points to `P01-003`.
