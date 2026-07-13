@@ -27,8 +27,8 @@ commit, and green required CI before it is marked `DONE`.
 
 ## P01 — Contracts, domain model, and design system
 
-- `[IN_PROGRESS] P01-001` Define IDs, timestamps, revisions, error envelope, and event envelope. Local Ajv fixtures pass; remote CI is pending.
-- `P01-002` Define `TaskPlan` and every v1 step schema with strict additional-property rules.
+- `[DONE] P01-001` Define IDs, timestamps, revisions, error envelope, and event envelope. Local fixtures and all six required CI jobs pass for `58770ba`.
+- `[IN_PROGRESS] P01-002` Define `TaskPlan` and every v1 step schema with strict additional-property rules.
 - `P01-003` Define execution state/event schemas and legal transitions.
 - `P01-004` Define schedule, approval, device, grant, evidence, artifact, and clipboard schemas.
 - `P01-005` Generate or test-map TypeScript, Rust, and Dart models.

@@ -23,5 +23,8 @@
 - Added strict common, error, and event JSON Schemas plus internal TypeScript
   types and Ajv positive/negative fixtures.
 - Local contracts check and formatting pass; remote CI is pending.
-- Next action: inspect the branch checks, then mark P01-001 done or fix the
-  failing contract boundary before moving to P01-002.
+- Security CI initially exposed a shallow-checkout range defect; adding
+  `fetch-depth: 0` made the scan deterministic.
+- Remote validation for `58770ba` passed Contracts, Web, Rust, Mobile,
+  Supabase, and Security. P01-001 is done.
+- Next task: `P01-002`, the strict executable `TaskPlan` and v1 step schemas.
