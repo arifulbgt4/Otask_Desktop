@@ -12,4 +12,8 @@
 - Completed: P00-001 through P00-005 and P00-009 acceptance checks.
 - Blocked: P00-006/P00-007/P00-008 because Rust, Flutter, and Supabase CLI are
   unavailable.
-- Next task: validate baseline GitHub Actions for `P00-010`.
+- Commit: `d936664` pushed to `origin/master` after correcting the malformed
+  SSH alias from `github.com-ersonal` to `github.com-personal`.
+- Required remote checks are pending/unverified; do not mark P00-010 done yet.
+- Next task: inspect the remote CI result, then resolve toolchain blockers or
+  continue with the first explicitly unblocked contract task.
