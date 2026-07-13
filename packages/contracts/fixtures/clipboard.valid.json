@@ -1,0 +1,16 @@
+{
+  "schema": "clipboard.schema.json",
+  "valid": true,
+  "value": {
+    "schema_version": "1.0",
+    "clipboard_id": "clipboard_01JTEST00000001",
+    "device_id": "device_01JTEST00000001",
+    "content_hash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "sensitivity": "internal",
+    "payload_ref": "storage://clipboard/clipboard_01JTEST00000001.txt",
+    "expires_at": "2026-07-13T10:00:00Z",
+    "pinned": false,
+    "deleted": false,
+    "revision": 1
+  }
+}
