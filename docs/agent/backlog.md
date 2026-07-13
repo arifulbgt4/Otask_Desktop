@@ -51,11 +51,13 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P02-011` Implement release metadata and signed-download URL function.
   Final head `08d91de`; all six required checks passed, including the
   published/draft/revoked/missing artifact runtime gate.
-- `[IN_PROGRESS] P02-012` Add local reset/seed/RLS/Edge Function CI suite.
+- `[DONE] P02-012` Add local reset/seed/RLS/Edge Function CI suite. Final head
+  `478706e`; all six required checks passed after clean reset, seed, pgTAP,
+  Edge Function guard, and stop.
 
 ## P03 — Desktop GUI and trusted service foundation
 
-- `P03-001` Create Tauri 2 React/Vite shell and navigation.
+- `[IN_PROGRESS] P03-001` Create Tauri 2 React/Vite shell and navigation.
 - `P03-002` Implement secure settings and platform credential storage.
 - `P03-003` Implement native OAuth system-browser callback flow.
 - `P03-004` Implement device key generation, registration, and capabilities.

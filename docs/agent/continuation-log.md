@@ -256,3 +256,14 @@
   `29251766440`.
 - P02-011 is closed; next task is P02-012, the local reset/seed/RLS/Edge
   Function CI suite.
+
+## 2026-07-13 — P02-012 complete
+
+- Branch: `task/P02-012-supabase-ci-suite`.
+- Added deterministic local seed buckets/content, pgTAP reset/seed/RLS checks,
+  static Edge Function/config guards, and Contracts/Supabase workflow hooks.
+- Final head `478706e` passed Contracts `29252702913`, Web `29252702103`, Rust
+  `29252702689`, Mobile `29252702441`, Supabase `29252702234`, and Security
+  `29252703475`.
+- P02 is complete; next task is P03-001, the Tauri 2 React/Vite shell and
+  navigation.
