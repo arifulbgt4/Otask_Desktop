@@ -1,11 +1,11 @@
 {
   "spec_version": "1.0",
-  "phase": "P02_SUPABASE_BACKEND_IDENTITY",
+  "phase": "P03_DESKTOP_GUI_TRUSTED_SERVICE",
   "current_task": "P03-001",
   "task_status": "in_progress",
   "last_completed_task": "P02-012",
-  "branch": "task/P02-012-supabase-ci-suite",
-  "last_commit": "478706e",
+  "branch": "task/P03-001-desktop-shell",
+  "last_commit": "b8b8202",
   "required_checks": {
     "contracts": "success",
     "web": "success",
@@ -19,5 +19,5 @@
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
   "next_ready_tasks": ["P03-001"],
-  "updated_at": "2026-07-13T19:20:00+06:00"
+  "updated_at": "2026-07-13T19:30:00+06:00"
 }
