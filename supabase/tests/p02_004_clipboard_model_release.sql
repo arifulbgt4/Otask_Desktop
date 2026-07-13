@@ -1,6 +1,6 @@
 begin;
 
-select plan(28);
+select plan(29);
 
 select has_table('public', 'clipboard_items', 'clipboard_items table exists');
 select has_table('public', 'clipboard_heads', 'clipboard_heads table exists');
