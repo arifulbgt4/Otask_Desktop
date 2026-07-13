@@ -106,6 +106,13 @@
 - Next action: inspect branch checks, then close P01-008 and complete the P01
   phase exit or fix any compatibility/CI issue.
 
+## 2026-07-13 — P01 phase exit
+
+- All six required checks for `9bce754` passed.
+- P01-001 through P01-008 are done; phase evidence is in
+  `docs/evidence/P01-PHASE-EXIT.md`.
+- Next task: `P02-001`, profiles/devices/device-key schema and RLS foundation.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
