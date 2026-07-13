@@ -1,0 +1,17 @@
+{
+  "schema": "execution-event.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "event_id": "event_01JTEST00000003",
+    "run_id": "run_01JTEST00000001",
+    "sequence": 0,
+    "event_type": "run.state.changed",
+    "from_state": "success",
+    "to_state": "running",
+    "actor": "model",
+    "occurred_at": "not-a-date",
+    "payload": {},
+    "unexpected": true
+  }
+}

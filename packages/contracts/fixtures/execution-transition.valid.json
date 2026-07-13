@@ -1,0 +1,16 @@
+{
+  "schema": "execution-state.schema.json",
+  "valid": true,
+  "transitions": [
+    { "from": "draft", "to": "validated" },
+    { "from": "validated", "to": "awaiting_approval" },
+    { "from": "awaiting_approval", "to": "queued" },
+    { "from": "queued", "to": "running" },
+    { "from": "running", "to": "success" },
+    { "from": "success", "to": "evidence_finalized" },
+    { "from": "evidence_finalized", "to": "synced" },
+    { "from": "failed", "to": "retry_queued" },
+    { "from": "retry_queued", "to": "queued" }
+  ],
+  "value": { "from": "queued", "to": "running" }
+}
