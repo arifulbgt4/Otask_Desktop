@@ -1,0 +1,11 @@
+{
+  "schema": "compatibility.schema.json",
+  "valid": true,
+  "expected_supported": true,
+  "value": {
+    "schema_version": "1.0",
+    "current_version": "1.0",
+    "supported_versions": ["1.0"],
+    "mode": "strict"
+  }
+}

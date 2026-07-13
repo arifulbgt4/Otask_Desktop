@@ -1,0 +1,29 @@
+{
+  "schema": "task-plan.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "plan_id": "plan_01JTEST00000002",
+    "version": 1,
+    "title": "Cyclic plan",
+    "target": { "device_id": "device_01JTEST00000001" },
+    "approval_mode": "always",
+    "timeout_seconds": 60,
+    "steps": [
+      {
+        "id": "a",
+        "type": "delay",
+        "depends_on": ["b"],
+        "parameters": { "duration_seconds": 1 },
+        "success_criteria": { "elapsed": true }
+      },
+      {
+        "id": "b",
+        "type": "delay",
+        "depends_on": ["a", "missing"],
+        "parameters": { "duration_seconds": 1 },
+        "success_criteria": { "elapsed": true }
+      }
+    ]
+  }
+}
