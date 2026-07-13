@@ -291,3 +291,15 @@
   `29255526673`.
 - P03-002 is closed; next task is P03-003, native OAuth system-browser callback
   flow.
+
+## 2026-07-13 — P03-003 complete
+
+- Branch: `task/P03-003-native-oauth`.
+- Added PKCE system-browser authorization, exact callback/state/expiry guards,
+  Supabase code exchange, refresh, sign-out, secure credential persistence, and
+  shared auth fixtures.
+- Final head `25dfa49` passed Contracts `29256417229`, Web `29256417278`, Rust
+  `29256417182`, Mobile `29256418813`, Supabase `29256417598`, and Security
+  `29256417545`.
+- P03-003 is closed; next task is P03-004, device key generation, registration,
+  and capability discovery.

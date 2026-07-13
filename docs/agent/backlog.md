@@ -63,8 +63,10 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P03-002` Implement secure settings and platform credential storage.
   Final head `7b0d7e7`; allowlisted credential IPC, memory-only dev fallback,
   Rust validation tests, and all six required checks passed.
-- `[IN_PROGRESS] P03-003` Implement native OAuth system-browser callback flow.
-- `P03-004` Implement device key generation, registration, and capabilities.
+- `[DONE] P03-003` Implement native OAuth system-browser callback flow. Final
+  head `25dfa49`; PKCE, callback/state/expiry validation, session exchange,
+  refresh/sign-out, and all six required checks passed.
+- `[IN_PROGRESS] P03-004` Implement device key generation, registration, and capabilities.
 - `P03-005` Create Rust service lifecycle and authenticated local IPC.
 - `P03-006` Create SQLite schema/migrations/repositories.
 - `P03-007` Implement Dashboard, Devices, Settings, and Sync Health screens.
