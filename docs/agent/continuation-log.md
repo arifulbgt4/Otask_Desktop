@@ -135,6 +135,12 @@
   owner/device RLS and pgTAP tests.
 - Remote CI is pending; inspect the Supabase test log before marking done.
 
+## 2026-07-13 — P02-002 complete
+
+- All six required checks for `dc6ca42` passed; both Supabase pgTAP suites
+  passed after reset.
+- P02-002 is done; state now points to `P02-003`.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
