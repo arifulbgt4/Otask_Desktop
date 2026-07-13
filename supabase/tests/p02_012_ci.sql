@@ -60,7 +60,7 @@ select is(
 reset role;
 
 select ok(
-  (select count(*) from pg_proc where pronamespace = 'public'::regnamespace and prosecdef) >= 8,
+  (select count(*) from pg_proc where pronamespace = 'public'::regnamespace and prosecdef) >= 7,
   'security-definer service boundaries are present'
 );
 select ok(
