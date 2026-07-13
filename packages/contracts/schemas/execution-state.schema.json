@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/execution-state.schema.json",
+  "title": "OTask execution state and transition record",
+  "type": "object",
+  "required": ["from", "to"],
+  "properties": {
+    "from": {
+      "type": ["string", "null"],
+      "enum": [
+        "draft",
+        "validated",
+        "awaiting_approval",
+        "queued",
+        "running",
+        "success",
+        "failed",
+        "cancelled",
+        "timeout",
+        "evidence_finalized",
+        "synced",
+        "rejected",
+        "expired",
+        "retry_queued",
+        null
+      ]
+    },
+    "to": {
+      "enum": [
+        "draft",
+        "validated",
+        "awaiting_approval",
+        "queued",
+        "running",
+        "success",
+        "failed",
+        "cancelled",
+        "timeout",
+        "evidence_finalized",
+        "synced",
+        "rejected",
+        "expired",
+        "retry_queued"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

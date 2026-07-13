@@ -1,0 +1,18 @@
+{
+  "schema": "run-grant.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "grant_id": "grant_01JTEST00000001",
+    "grant_type": "run",
+    "user_id": "user_01JTEST00000001",
+    "device_id": "device_01JTEST00000001",
+    "run_id": "run_01JTEST00000001",
+    "plan_hash": "tampered",
+    "scope": { "workspace_refs": [], "step_ids": [], "read_only": false },
+    "issued_at": "2026-07-13T09:00:00Z",
+    "expires_at": "2026-07-13T10:00:00Z",
+    "nonce": "short",
+    "signature": "unsigned"
+  }
+}
