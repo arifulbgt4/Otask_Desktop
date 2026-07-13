@@ -10,3 +10,7 @@ Current endpoints:
   ten-minute hashed pairing challenge.
 - `pairing-challenge`: same-user Ed25519 proof, expiry/attempt checks, one-time
   consumption, and promotion from `pairing` to `trusted`.
+- `rotate-device-key`: current-key signature proof followed by atomic key
+  replacement; the old key is marked rotated and cannot be reused.
+- `revoke-device`: atomically revokes the device, all public keys, active
+  grants, outstanding pairing challenges, and records a redacted audit event.

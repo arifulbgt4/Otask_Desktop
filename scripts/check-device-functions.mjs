@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import {
   sha256Hex,
   validatePairingInput,
+  validateRevocationInput,
   validateRegistrationInput,
+  validateRotationInput,
 } from "../supabase/functions/_shared/device-validation.mjs";
 
 const validRegistration = {
@@ -45,6 +47,32 @@ assert.match(
 assert.match(
   validatePairingInput({ ...validPairing, signature: "bad" }),
   /signature/,
+);
+const validRotation = {
+  device_id: validRegistration.device_id,
+  current_key_version: 1,
+  new_key_version: 2,
+  new_public_key: "C".repeat(43),
+  signature: "D".repeat(86),
+};
+assert.equal(validateRotationInput(validRotation), null);
+assert.match(
+  validateRotationInput({ ...validRotation, new_key_version: 1 }),
+  /increase/,
+);
+assert.equal(
+  validateRevocationInput({
+    device_id: validRegistration.device_id,
+    reason: "lost",
+  }),
+  null,
+);
+assert.match(
+  validateRevocationInput({
+    device_id: validRegistration.device_id,
+    reason: "x".repeat(501),
+  }),
+  /reason/,
 );
 assert.equal(
   await sha256Hex("otask-pairing"),

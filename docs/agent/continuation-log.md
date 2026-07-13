@@ -192,6 +192,15 @@
   pgTAP suites passed, and Contracts ran the device validation/hash fixtures.
 - P02-007 is closed; next task is P02-008, key rotation and device revocation.
 
+## 2026-07-14 — P02-008 implementation
+
+- Branch: `task/P02-008-key-rotation-revocation`.
+- Added service-only atomic key-rotation/revocation SQL functions, authenticated
+  Edge Function wrappers, revocation audit/grant invalidation, and validation /
+  pgTAP coverage.
+- Remote CI is pending; inspect Supabase function privilege tests before
+  closing.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.

@@ -108,6 +108,66 @@ export function validatePairingInput(input) {
   return null;
 }
 
+export function validateRotationInput(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    return "request body must be an object";
+  }
+  if (
+    typeof input.device_id !== "string" ||
+    !DEVICE_ID_PATTERN.test(input.device_id)
+  ) {
+    return "device_id is invalid";
+  }
+  if (
+    !Number.isInteger(input.current_key_version) ||
+    input.current_key_version < 1
+  ) {
+    return "current_key_version is invalid";
+  }
+  if (
+    !Number.isInteger(input.new_key_version) ||
+    input.new_key_version <= input.current_key_version
+  ) {
+    return "new_key_version must increase";
+  }
+  if (
+    typeof input.new_public_key !== "string" ||
+    input.new_public_key.length < 43 ||
+    input.new_public_key.length > 256 ||
+    !BASE64URL_PATTERN.test(input.new_public_key)
+  ) {
+    return "new_public_key must be base64url encoded";
+  }
+  if (
+    typeof input.signature !== "string" ||
+    input.signature.length < 86 ||
+    input.signature.length > 256 ||
+    !BASE64URL_PATTERN.test(input.signature)
+  ) {
+    return "signature must be base64url encoded";
+  }
+  return null;
+}
+
+export function validateRevocationInput(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    return "request body must be an object";
+  }
+  if (
+    typeof input.device_id !== "string" ||
+    !DEVICE_ID_PATTERN.test(input.device_id)
+  ) {
+    return "device_id is invalid";
+  }
+  if (
+    input.reason !== undefined &&
+    (typeof input.reason !== "string" || input.reason.length > 500)
+  ) {
+    return "reason is invalid";
+  }
+  return null;
+}
+
 export function base64urlToBytes(value) {
   const normalized = value
     .replace(/-/g, "+")

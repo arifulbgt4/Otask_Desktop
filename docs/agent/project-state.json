@@ -4,8 +4,8 @@
   "current_task": "P02-008",
   "task_status": "in_progress",
   "last_completed_task": "P02-007",
-  "branch": "task/P02-007-device-registration",
-  "last_commit": "0717f7d",
+  "branch": "task/P02-008-key-rotation-revocation",
+  "last_commit": "f010920",
   "required_checks": {
     "contracts": "success",
     "web": "success",
@@ -19,5 +19,5 @@
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
   "next_ready_tasks": ["P02-008"],
-  "updated_at": "2026-07-14T04:30:00+06:00"
+  "updated_at": "2026-07-14T04:45:00+06:00"
 }
