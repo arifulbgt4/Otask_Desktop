@@ -3,6 +3,8 @@ const DEVICE_ID_PATTERN = /^device_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$/;
 const RUN_ID_PATTERN = /^run_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$/;
 const HASH_PATTERN = /^[a-f0-9]{64}$/;
 const BASE64URL_PATTERN = /^[A-Za-z0-9_-]+$/;
+const SESSION_ID_PATTERN = /^session_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$/;
+const SIGNAL_ID_PATTERN = /^signal_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$/;
 
 function stableStringify(value) {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
@@ -36,7 +38,7 @@ function base64urlToBytes(value) {
 function grantPayload(input) {
   return {
     grant_id: input.grant_id,
-    grant_type: "run",
+    grant_type: input.grant_type ?? "run",
     user_id: input.user_id,
     device_id: input.device_id,
     run_id: input.run_id,
@@ -177,4 +179,94 @@ export function validateGrantProof(input) {
     return "signature is invalid";
   }
   return null;
+}
+
+export function validateTerminalSessionRequest(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    return "request body must be an object";
+  }
+  if (
+    typeof input.session_id !== "string" ||
+    !SESSION_ID_PATTERN.test(input.session_id)
+  ) {
+    return "session_id is invalid";
+  }
+  const grantError = validateGrantProof(input);
+  if (grantError) return grantError;
+  if (typeof input.run_id !== "string" || !RUN_ID_PATTERN.test(input.run_id)) {
+    return "run_id is invalid";
+  }
+  if (
+    typeof input.transport !== "string" ||
+    !["webrtc", "relay"].includes(input.transport)
+  ) {
+    return "transport is invalid";
+  }
+  if (
+    typeof input.initiated_by !== "string" ||
+    !["desktop", "mobile", "web"].includes(input.initiated_by)
+  ) {
+    return "initiated_by is invalid";
+  }
+  if (
+    !input.scope ||
+    typeof input.scope !== "object" ||
+    Array.isArray(input.scope)
+  ) {
+    return "scope must be an object";
+  }
+  if (typeof input.scope.read_only !== "boolean") {
+    return "scope.read_only must be boolean";
+  }
+  return null;
+}
+
+export function validateTerminalSignalRequest(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    return "request body must be an object";
+  }
+  if (
+    typeof input.signal_id !== "string" ||
+    !SIGNAL_ID_PATTERN.test(input.signal_id)
+  ) {
+    return "signal_id is invalid";
+  }
+  if (
+    typeof input.session_id !== "string" ||
+    !SESSION_ID_PATTERN.test(input.session_id)
+  ) {
+    return "session_id is invalid";
+  }
+  if (
+    typeof input.signal_type !== "string" ||
+    !["offer", "answer", "ice_candidate", "renegotiate", "close"].includes(
+      input.signal_type,
+    )
+  ) {
+    return "signal_type is invalid";
+  }
+  if (
+    !input.payload ||
+    typeof input.payload !== "object" ||
+    Array.isArray(input.payload)
+  ) {
+    return "payload must be an object";
+  }
+  if (
+    typeof input.payload_hash !== "string" ||
+    !/^[a-f0-9]{64}$/.test(input.payload_hash)
+  ) {
+    return "payload_hash is invalid";
+  }
+  return null;
+}
+
+export async function sha256Hex(value) {
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(value),
+  );
+  return [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
 }

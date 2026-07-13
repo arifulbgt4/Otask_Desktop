@@ -34,6 +34,12 @@ verify_jwt = true
 [functions.consume-run-grant]
 verify_jwt = true
 
+[functions.initialize-terminal-session]
+verify_jwt = true
+
+[functions.append-terminal-signal]
+verify_jwt = true
+
 [api]
 enabled = true
 port = 54321
