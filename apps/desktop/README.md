@@ -27,3 +27,8 @@ tokens or keys to `localStorage`, cookies, or a plaintext settings file.
 Native sign-in uses the system browser with an expiring PKCE transaction. The
 desktop client accepts only the configured callback URI, exchanges the code,
 refreshes sessions, and clears both secure credentials on sign-out.
+
+Device registration generates an Ed25519 key reference through native IPC (or
+an in-memory WebCrypto fallback during browser development), discovers local
+capabilities, and sends only the public key to the authenticated registration
+function.
