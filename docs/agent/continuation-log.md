@@ -279,3 +279,15 @@
   `29254606304`.
 - P03-001 is closed; next task is P03-002, secure settings and platform
   credential storage abstraction.
+
+## 2026-07-13 — P03-002 complete
+
+- Branch: `task/P03-002-secure-settings`.
+- Added allowlisted frontend credential IPC, memory-only development fallback,
+  non-secret settings normalization, Rust credential-store validation, and
+  no-plaintext persistence guards.
+- Final head `7b0d7e7` passed Contracts `29255526728`, Web `29255526657`, Rust
+  `29255526668`, Mobile `29255526624`, Supabase `29255526712`, and Security
+  `29255526673`.
+- P03-002 is closed; next task is P03-003, native OAuth system-browser callback
+  flow.
