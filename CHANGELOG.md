@@ -16,6 +16,8 @@
   interaction-target, motion, and risk-semantics guards.
 - P01-007: added GUI route/navigation maps and machine-readable wireframe
   screen-state contracts for desktop, mobile, and web surfaces.
+- P01-008: added strict contract compatibility policy, version fixtures, and
+  cross-language manifest drift checks.
 
 ## Unreleased
 

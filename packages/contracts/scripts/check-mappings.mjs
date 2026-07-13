@@ -18,6 +18,7 @@ const expected = [
   "evidence.schema.json",
   "artifact.schema.json",
   "clipboard.schema.json",
+  "compatibility.schema.json",
 ];
 
 for (const file of expected) await readFile(join(schemaDir, file), "utf8");

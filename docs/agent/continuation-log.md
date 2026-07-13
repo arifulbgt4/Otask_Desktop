@@ -97,6 +97,15 @@
 - All six required checks for `8ead806` passed.
 - P01-007 is done; state now points to `P01-008`.
 
+## 2026-07-13 — P01-008 implementation
+
+- Branch: `task/P01-008-compatibility-fixtures`.
+- Added compatibility schema/policy, supported/unsupported version fixtures,
+  TypeScript compatibility helpers, and 14-schema mapping coverage.
+- Local contracts and workspace checks pass; remote CI is pending.
+- Next action: inspect branch checks, then close P01-008 and complete the P01
+  phase exit or fix any compatibility/CI issue.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.

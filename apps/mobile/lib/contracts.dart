@@ -15,6 +15,7 @@ const List<String> generatedSchemaFiles = <String>[
   'evidence.schema.json',
   'artifact.schema.json',
   'clipboard.schema.json',
+  'compatibility.schema.json',
 ];
 
 enum ExecutionState {

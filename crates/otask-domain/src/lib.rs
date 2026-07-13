@@ -16,6 +16,7 @@ pub const GENERATED_SCHEMA_FILES: &[&str] = &[
     "evidence.schema.json",
     "artifact.schema.json",
     "clipboard.schema.json",
+    "compatibility.schema.json",
 ];
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

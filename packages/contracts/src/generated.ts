@@ -18,6 +18,7 @@ export const GENERATED_SCHEMA_FILES = [
   "evidence.schema.json",
   "artifact.schema.json",
   "clipboard.schema.json",
+  "compatibility.schema.json",
 ] as const;
 
 export type GeneratedId = string;
