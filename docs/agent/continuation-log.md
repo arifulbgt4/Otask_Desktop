@@ -146,7 +146,8 @@
 - Branch: `task/P02-003-run-evidence-grants`.
 - Added run/event/log/artifact/approval/grant schema and RLS migration with
   append-only/sequence/hash/expiry constraints and pgTAP tests.
-- Remote CI is pending; inspect Supabase test output before closing.
+- All six required checks passed for `6029b24`; Supabase reset and pgTAP
+  suites passed. P02-003 is closed; next task is P02-004.
 
 ## 2026-07-13 — P01-007 implementation
 
