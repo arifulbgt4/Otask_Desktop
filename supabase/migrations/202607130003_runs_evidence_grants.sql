@@ -37,7 +37,7 @@ create table if not exists public.execution_log_chunks (
   content_hash text not null check (content_hash ~ '^[a-f0-9]{64}$'),
   byte_size integer not null check (byte_size between 0 and 1048576),
   redacted boolean not null default true,
-  payload_ref text not null check (payload_ref ~ '^storage://logs/[A-Za-z0-9._/-]{1,512}$'),
+  payload_ref text not null check (char_length(payload_ref) between 1 and 512 and payload_ref ~ '^storage://logs/[A-Za-z0-9._/-]+$'),
   created_at timestamptz not null default timezone('utc', now()),
   unique (run_id, sequence)
 );
@@ -49,7 +49,7 @@ create table if not exists public.execution_artifacts (
   content_hash text not null check (content_hash ~ '^[a-f0-9]{64}$'),
   size_bytes bigint not null check (size_bytes between 0 and 104857600),
   mime_type text not null check (char_length(mime_type) between 3 and 120),
-  storage_ref text not null check (storage_ref ~ '^storage://[A-Za-z0-9._/-]{1,512}$'),
+  storage_ref text not null check (char_length(storage_ref) between 1 and 512 and storage_ref ~ '^storage://[A-Za-z0-9._/-]+$'),
   redacted boolean not null default true,
   created_at timestamptz not null default timezone('utc', now())
 );
