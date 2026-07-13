@@ -47,8 +47,8 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P02-007` Implement device registration and pairing challenge functions. Same-user Ed25519 proof, hashed expiry/attempt limits, pgTAP, function fixtures, and all six required CI jobs pass for `0717f7d`.
 - `[DONE] P02-008` Implement key rotation and device revocation. Service-only atomic key rotation/revocation, old-key/grant invalidation, audit events, pgTAP, and all six required CI jobs pass for `62ceb1f`.
 - `[DONE] P02-009` Implement signed plan/approval/target-bound run grants. Service-only atomic issuance/consumption, HMAC signatures, approval/plan/target binding, replay/expiry rejection, pgTAP/runtime fixtures, and all six required CI jobs pass for `d51a8a4`.
-- `[IN_PROGRESS] P02-010` Implement terminal-session initialization/signaling records.
-- `P02-011` Implement release metadata and signed-download URL function.
+- `[DONE] P02-010` Implement terminal-session initialization/signaling records. Owner-scoped session state, append-only Realtime signaling, one-time terminal-grant initialization, payload hashing, sequencing, close transition, pgTAP/runtime fixtures, and all six required CI jobs pass for `d5e6f2c`.
+- `[IN_PROGRESS] P02-011` Implement release metadata and signed-download URL function.
 - `P02-012` Add local reset/seed/RLS/Edge Function CI suite.
 
 ## P03 — Desktop GUI and trusted service foundation

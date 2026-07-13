@@ -1,23 +1,23 @@
 {
   "spec_version": "1.0",
   "phase": "P02_SUPABASE_BACKEND_IDENTITY",
-  "current_task": "P02-010",
+  "current_task": "P02-011",
   "task_status": "in_progress",
-  "last_completed_task": "P02-009",
+  "last_completed_task": "P02-010",
   "branch": "task/P02-010-terminal-signaling",
-  "last_commit": "3e3e98c",
+  "last_commit": "d5e6f2c",
   "required_checks": {
-    "contracts": "pending",
-    "web": "pending",
-    "rust": "pending",
+    "contracts": "success",
+    "web": "success",
+    "rust": "success",
     "desktop": "not_applicable",
-    "mobile": "pending",
-    "supabase": "pending",
-    "security": "pending"
+    "mobile": "success",
+    "supabase": "success",
+    "security": "success"
   },
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
   "next_ready_tasks": ["P02-010"],
-  "updated_at": "2026-07-14T07:05:00+06:00"
+  "updated_at": "2026-07-14T07:25:00+06:00"
 }

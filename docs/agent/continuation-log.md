@@ -214,6 +214,17 @@
 - P02-009 is closed; next task is P02-010, terminal-session
   initialization/signaling records.
 
+## 2026-07-14 — P02-010 complete
+
+- Branch: `task/P02-010-terminal-signaling`.
+- Added owner-scoped terminal session state, append-only Realtime signaling,
+  one-time terminal-grant initialization, payload hashing, sequence allocation,
+  close transition, authenticated Edge Functions, and pgTAP/runtime fixtures.
+- All six required checks passed for final head `d5e6f2c`; Supabase reset,
+  pgTAP, and terminal runtime assertions passed.
+- P02-010 is closed; next task is P02-011, release metadata and signed-download
+  URL function.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
