@@ -16,3 +16,12 @@
 - All six required checks for `9265c2f` are green; P00 is closed.
 - Next task: `P01-001`, the versioned identity, time, revision, error, and event
   contract foundation.
+
+## 2026-07-13 — P01-001 implementation
+
+- Branch: `task/P01-001-contract-foundation`.
+- Added strict common, error, and event JSON Schemas plus internal TypeScript
+  types and Ajv positive/negative fixtures.
+- Local contracts check and formatting pass; remote CI is pending.
+- Next action: inspect the branch checks, then mark P01-001 done or fix the
+  failing contract boundary before moving to P01-002.
