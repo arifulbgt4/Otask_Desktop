@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0",
+  "global_states": ["loading", "empty", "ready", "error", "offline"],
+  "routes": [
+    {
+      "surface": "desktop",
+      "id": "dashboard",
+      "path": "/dashboard",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "none"
+    },
+    {
+      "surface": "desktop",
+      "id": "workflows",
+      "path": "/workflows",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "low"
+    },
+    {
+      "surface": "desktop",
+      "id": "workflow-detail",
+      "path": "/workflows/:workflowId",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "medium"
+    },
+    {
+      "surface": "desktop",
+      "id": "plan-review",
+      "path": "/workflows/:workflowId/versions/:version/plan-review",
+      "auth": "user",
+      "states": [
+        "loading",
+        "empty",
+        "ready",
+        "error",
+        "offline",
+        "approvalRequired"
+      ],
+      "risk": "high"
+    },
+    {
+      "surface": "desktop",
+      "id": "schedules",
+      "path": "/schedules",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "medium"
+    },
+    {
+      "surface": "desktop",
+      "id": "schedule-editor",
+      "path": "/schedules/:scheduleId/edit",
+      "auth": "user",
+      "states": [
+        "loading",
+        "empty",
+        "ready",
+        "error",
+        "offline",
+        "approvalRequired"
+      ],
+      "risk": "medium"
+    },
+    {
+      "surface": "desktop",
+      "id": "devices",
+      "path": "/devices",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "medium"
+    },
+    {
+      "surface": "desktop",
+      "id": "approvals",
+      "path": "/approvals",
+      "auth": "user",
+      "states": [
+        "loading",
+        "empty",
+        "ready",
+        "error",
+        "offline",
+        "approvalRequired"
+      ],
+      "risk": "high"
+    },
+    {
+      "surface": "desktop",
+      "id": "run-monitor",
+      "path": "/runs/:runId",
+      "auth": "user",
+      "states": [
+        "loading",
+        "empty",
+        "ready",
+        "error",
+        "offline",
+        "cancellable"
+      ],
+      "risk": "high"
+    },
+    {
+      "surface": "desktop",
+      "id": "terminal-session",
+      "path": "/terminal/:sessionId",
+      "auth": "user",
+      "states": [
+        "loading",
+        "empty",
+        "ready",
+        "error",
+        "offline",
+        "cancellable"
+      ],
+      "risk": "critical"
+    },
+    {
+      "surface": "desktop",
+      "id": "evidence-report",
+      "path": "/runs/:runId/evidence",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "low"
+    },
+    {
+      "surface": "desktop",
+      "id": "model-manager",
+      "path": "/model",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "medium"
+    },
+    {
+      "surface": "desktop",
+      "id": "settings",
+      "path": "/settings",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "medium"
+    },
+    {
+      "surface": "desktop",
+      "id": "sync-health",
+      "path": "/settings/sync-health",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "low"
+    },
+    {
+      "surface": "mobile",
+      "id": "mobile-dashboard",
+      "path": "/dashboard",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "none"
+    },
+    {
+      "surface": "mobile",
+      "id": "mobile-approvals",
+      "path": "/approvals",
+      "auth": "user",
+      "states": [
+        "loading",
+        "empty",
+        "ready",
+        "error",
+        "offline",
+        "approvalRequired"
+      ],
+      "risk": "high"
+    },
+    {
+      "surface": "mobile",
+      "id": "mobile-run",
+      "path": "/runs/:runId",
+      "auth": "user",
+      "states": [
+        "loading",
+        "empty",
+        "ready",
+        "error",
+        "offline",
+        "cancellable"
+      ],
+      "risk": "high"
+    },
+    {
+      "surface": "web",
+      "id": "web-login",
+      "path": "/login",
+      "auth": "public",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "none"
+    },
+    {
+      "surface": "web",
+      "id": "learn",
+      "path": "/learn",
+      "auth": "public",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "none"
+    },
+    {
+      "surface": "web",
+      "id": "docs",
+      "path": "/docs",
+      "auth": "public",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "none"
+    },
+    {
+      "surface": "web",
+      "id": "releases",
+      "path": "/releases",
+      "auth": "public",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "none"
+    },
+    {
+      "surface": "web",
+      "id": "control",
+      "path": "/control",
+      "auth": "user",
+      "states": ["loading", "empty", "ready", "error", "offline"],
+      "risk": "medium"
+    }
+  ]
+}

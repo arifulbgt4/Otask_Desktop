@@ -3,17 +3,327 @@
 ## 2026-07-13 — P00 bootstrap started
 
 - Current task: `P00-010`
-- Repository state: empty repository with no commits
+- Repository state: bootstrap commit `d936664` and CI/state commit `9265c2f` are
+  pushed to `origin/master`.
 - Completed in this session: root metadata, MIT license, editor/tool-version
   files, package workspace metadata, README, AGENTS, master-spec summary,
   ADR-001 through ADR-010, and project-state schema/state templates
 - Toolchain evidence: Node `v24.14.0`, pnpm `11.7.0`, Docker available;
   Rust/Cargo, Flutter, and Supabase CLI unavailable
 - Completed: P00-001 through P00-005 and P00-009 acceptance checks.
-- Blocked: P00-006/P00-007/P00-008 because Rust, Flutter, and Supabase CLI are
-  unavailable.
-- Commit: `d936664` pushed to `origin/master` after correcting the malformed
-  SSH alias from `github.com-ersonal` to `github.com-personal`.
-- Required remote checks are pending/unverified; do not mark P00-010 done yet.
-- Next task: inspect the remote CI result, then resolve toolchain blockers or
-  continue with the first explicitly unblocked contract task.
+- Local limitation: Rust/Cargo, Flutter, and Supabase CLI remain unavailable,
+  but their remote CI jobs passed.
+- All six required checks for `9265c2f` are green; P00 is closed.
+- Next task: `P01-001`, the versioned identity, time, revision, error, and event
+  contract foundation.
+
+## 2026-07-13 — P01-001 implementation
+
+- Branch: `task/P01-001-contract-foundation`.
+- Added strict common, error, and event JSON Schemas plus internal TypeScript
+  types and Ajv positive/negative fixtures.
+- Local contracts check and formatting pass; remote CI is pending.
+- Security CI initially exposed a shallow-checkout range defect; adding
+  `fetch-depth: 0` made the scan deterministic.
+- Remote validation for `58770ba` passed Contracts, Web, Rust, Mobile,
+  Supabase, and Security. P01-001 is done.
+- Next task: `P01-002`, the strict executable `TaskPlan` and v1 step schemas.
+
+## 2026-07-13 — P01-002 implementation
+
+- Branch: `task/P01-002-taskplan-schemas`.
+- Added the versioned executable TaskPlan schema, all twelve v1 typed steps,
+  bounded parameters/evidence controls, and dependency graph validation.
+- Local contract validation passes with seven fixtures; remote CI is pending.
+- Next action: inspect branch checks, then close P01-002 or fix the schema
+  boundary before selecting P01-003.
+
+## 2026-07-13 — P01-002 complete
+
+- All six required checks for `4385afb` passed, including the Supabase local
+  start/reset/stop job.
+- P01-002 is done; state now points to `P01-003`.
+
+## 2026-07-13 — P01-003 implementation
+
+- Branch: `task/P01-003-execution-state-events`.
+- Added execution state/event schemas, TypeScript transition table, legal
+  transition helper, and positive/negative fixtures.
+- Local contract validation passes; remote CI is pending.
+- Next action: inspect branch checks, then close P01-003 or fix the state
+  boundary before selecting P01-004.
+
+## 2026-07-13 — P01-003 complete
+
+- All six required checks for `1d5b8fa` passed, including Mobile and Supabase.
+- P01-003 is done; state now points to `P01-004`.
+
+## 2026-07-13 — P01-004 implementation
+
+- Branch: `task/P01-004-control-plane-contracts`.
+- Added seven control-plane contract schemas and fourteen positive/negative
+  fixtures (25 fixtures pass across the package).
+- Local contract validation passes; remote CI is pending.
+- Next action: inspect branch checks, then close P01-004 or fix the contract
+  boundary before selecting P01-005.
+
+## 2026-07-13 — P01-004 complete
+
+- All six required checks for `e5e0eb7` passed, including Supabase start/reset.
+- P01-004 is done; state now points to `P01-005`.
+
+## 2026-07-13 — P01-005 implementation
+
+- Branch: `task/P01-005-contract-mappings`.
+- Added TypeScript, Rust, and Dart schema manifests plus execution transition
+  mappings and a guard that prevents schema/mapping drift.
+- Local contracts and mapping checks pass; platform CI is pending.
+- Next action: inspect branch checks, then close P01-005 or fix any
+  platform-specific mapping/format issue before selecting P01-006.
+
+## 2026-07-13 — P01-005 complete
+
+- Dart formatting was corrected after the first Mobile CI run; the replacement
+  head `15b5dfb` passed all six required checks.
+- P01-005 is done; state now points to `P01-006`.
+
+## 2026-07-13 — P01-006 complete
+
+- All six required checks for `ad705a2` passed.
+- P01-006 is done; state now points to `P01-007`.
+
+## 2026-07-13 — P01-007 complete
+
+- All six required checks for `8ead806` passed.
+- P01-007 is done; state now points to `P01-008`.
+
+## 2026-07-13 — P01-008 implementation
+
+- Branch: `task/P01-008-compatibility-fixtures`.
+- Added compatibility schema/policy, supported/unsupported version fixtures,
+  TypeScript compatibility helpers, and 14-schema mapping coverage.
+- Local contracts and workspace checks pass; remote CI is pending.
+- Next action: inspect branch checks, then close P01-008 and complete the P01
+  phase exit or fix any compatibility/CI issue.
+
+## 2026-07-13 — P01 phase exit
+
+- All six required checks for `9bce754` passed.
+- P01-001 through P01-008 are done; phase evidence is in
+  `docs/evidence/P01-PHASE-EXIT.md`.
+- Next task: `P02-001`, profiles/devices/device-key schema and RLS foundation.
+
+## 2026-07-13 — P02-001 implementation
+
+- Branch: `task/P02-001-identity-devices-rls`.
+- Added the first Supabase migration for profiles, devices, public keys,
+  capabilities, owner-scoped RLS, constraints, indexes, and pgTAP tests.
+- CI now executes `supabase test db`; local Supabase CLI is unavailable.
+- Next action: inspect the remote Supabase/Rust/Mobile/Contracts/Web/Security
+  checks, then close P02-001 or fix the migration/test failure.
+
+## 2026-07-13 — P02-001 complete
+
+- All six required checks for `1996fc4` passed; Supabase pgTAP tests and reset
+  completed successfully.
+- P02-001 is done; state now points to `P02-002`.
+
+## 2026-07-13 — P02-002 implementation
+
+- Branch: `task/P02-002-workflow-schedule-migrations`.
+- Added immutable workflow-version and target-bound schedule migration with
+  owner/device RLS and pgTAP tests.
+- Remote CI is pending; inspect the Supabase test log before marking done.
+
+## 2026-07-13 — P02-002 complete
+
+- All six required checks for `dc6ca42` passed; both Supabase pgTAP suites
+  passed after reset.
+- P02-002 is done; state now points to `P02-003`.
+
+## 2026-07-14 — P02-003 implementation
+
+- Branch: `task/P02-003-run-evidence-grants`.
+- Added run/event/log/artifact/approval/grant schema and RLS migration with
+  append-only/sequence/hash/expiry constraints and pgTAP tests.
+- All six required checks passed for `6029b24`; Supabase reset and pgTAP
+  suites passed. P02-003 is closed; next task is P02-004.
+
+## 2026-07-14 — P02-004 implementation
+
+- Branch: `task/P02-004-clipboard-model-release`.
+- Added clipboard/sync/notification, signed model/release metadata, model
+  installation, learning-resource, and append-only audit tables with RLS,
+  retention/public-access constraints, and pgTAP coverage.
+- All six required checks passed for `1de090f`; Supabase start/reset, pgTAP,
+  and stop completed successfully. P02-004 is closed; next task is P02-005,
+  the cross-user and revoked-device RLS test suite.
+
+## 2026-07-14 — P02-005 complete
+
+- Final head `4c53cc3` passed all six required checks. Supabase reset and both
+  RLS suites plus the two-user runtime fixture passed.
+- P02-005 is closed; next task is P02-006, Google OAuth local/dev callback
+  handling.
+
+## 2026-07-14 — P02-006 implementation
+
+- Branch: `task/P02-006-google-oauth`.
+- Added env-backed Supabase Google provider config, exact local web/native
+  redirect allowlists, PKCE callback parsers for JS and Flutter, and config /
+  fixture checks. Live Google credentials remain untracked by design.
+- Remote CI is pending; inspect the auth/config checks before closing.
+
+## 2026-07-14 — P02-006 complete
+
+- Final head `1ed4160` passed all six required checks. Supabase started with
+  Google config enabled, reset/pgTAP/stop passed, and Contracts validated the
+  env-backed config and callback fixtures.
+- P02-006 is closed for local/dev configuration and callback boundaries. A real
+  Google account smoke test needs untracked developer credentials and remains
+  in the later web/native client tasks. Next task is P02-007.
+
+## 2026-07-14 — P02-007 implementation
+
+- Branch: `task/P02-007-device-registration`.
+- Added hashed pairing challenge storage, register-device and pairing-challenge
+  Edge Functions, validation/hash fixtures, and pgTAP coverage.
+- All six required checks passed for final head `0717f7d`; Supabase reset and
+  pgTAP suites passed, and Contracts ran the device validation/hash fixtures.
+- P02-007 is closed; next task is P02-008, key rotation and device revocation.
+
+## 2026-07-14 — P02-008 implementation
+
+- Branch: `task/P02-008-key-rotation-revocation`.
+- Added service-only atomic key-rotation/revocation SQL functions, authenticated
+  Edge Function wrappers, revocation audit/grant invalidation, and validation /
+  pgTAP coverage.
+- All six required checks passed for final head `62ceb1f`; Supabase reset and
+  pgTAP service-role privilege suites passed.
+- P02-008 is closed; next task is P02-009, signed plan/approval/target-bound
+  run grants.
+
+## 2026-07-14 — P02-009 complete
+
+- Branch: `task/P02-009-run-grants`.
+- Added service-only signed run-grant issuance/consumption, HMAC canonical
+  envelopes, approval/plan/target binding, replay/expiry/revocation checks,
+  Edge Functions, and pgTAP/runtime coverage.
+- All six required checks passed for final head `d51a8a4`; Supabase reset,
+  pgTAP, and all 10 run-grant runtime assertions passed.
+- P02-009 is closed; next task is P02-010, terminal-session
+  initialization/signaling records.
+
+## 2026-07-14 — P02-010 complete
+
+- Branch: `task/P02-010-terminal-signaling`.
+- Added owner-scoped terminal session state, append-only Realtime signaling,
+  one-time terminal-grant initialization, payload hashing, sequence allocation,
+  close transition, authenticated Edge Functions, and pgTAP/runtime fixtures.
+- All six required checks passed for final head `d5e6f2c`; Supabase reset,
+  pgTAP, and terminal runtime assertions passed.
+- P02-010 is closed; next task is P02-011, release metadata and signed-download
+  URL function.
+
+## 2026-07-13 — P01-007 implementation
+
+- Branch: `task/P01-007-route-maps`.
+- Added GUI route/navigation documentation, 22-route screen-state contract,
+  and a guard for required states, risk/cancellation rules, and prohibited
+  CLI/shell surfaces.
+- Local workspace checks pass; remote CI is pending.
+- Next action: inspect branch checks, then close P01-007 or fix the route
+  contract before selecting P01-008.
+
+## 2026-07-13 — P01-006 implementation
+
+- Branch: `task/P01-006-design-tokens`.
+- Added the `@otask/design-system` token package and automated accessibility /
+  risk-semantic checks.
+- All local workspace checks and formatting pass; remote CI is pending.
+- Next action: inspect branch checks, then close P01-006 or fix any token/CI
+  issue before selecting P01-007.
+
+## 2026-07-13 — P02-011 complete
+
+- Branch: `task/P02-011-release-downloads`.
+- Added the service-only published release metadata gate and anonymous
+  signed-download URL Edge Function backed by private Storage objects.
+- Corrected PostgreSQL storage-reference regex bounds and the revoked release
+  runtime fixture after the first Supabase CI pass exposed both constraints.
+- Final head `08d91de` passed Contracts `29251766577`, Web `29251766441`, Rust
+  `29251766460`, Mobile `29251766471`, Supabase `29251766528`, and Security
+  `29251766440`.
+- P02-011 is closed; next task is P02-012, the local reset/seed/RLS/Edge
+  Function CI suite.
+
+## 2026-07-13 — P02-012 complete
+
+- Branch: `task/P02-012-supabase-ci-suite`.
+- Added deterministic local seed buckets/content, pgTAP reset/seed/RLS checks,
+  static Edge Function/config guards, and Contracts/Supabase workflow hooks.
+- Final head `478706e` passed Contracts `29252702913`, Web `29252702103`, Rust
+  `29252702689`, Mobile `29252702441`, Supabase `29252702234`, and Security
+  `29252703475`.
+- P02 is complete; next task is P03-001, the Tauri 2 React/Vite shell and
+  navigation.
+
+## 2026-07-13 — P03-001 complete
+
+- Branch: `task/P03-001-desktop-shell`.
+- Added the Tauri 2 configuration, React/Vite shell, typed nine-route
+  navigation, accessible sidebar/topbar, dashboard status states, and safe
+  empty states for the next desktop slices.
+- Final head `50d4357` passed Contracts `29254606332`, Web `29254607505`, Rust
+  `29254606739`, Mobile `29254606796`, Supabase `29254606535`, and Security
+  `29254606304`.
+- P03-001 is closed; next task is P03-002, secure settings and platform
+  credential storage abstraction.
+
+## 2026-07-13 — P03-002 complete
+
+- Branch: `task/P03-002-secure-settings`.
+- Added allowlisted frontend credential IPC, memory-only development fallback,
+  non-secret settings normalization, Rust credential-store validation, and
+  no-plaintext persistence guards.
+- Final head `7b0d7e7` passed Contracts `29255526728`, Web `29255526657`, Rust
+  `29255526668`, Mobile `29255526624`, Supabase `29255526712`, and Security
+  `29255526673`.
+- P03-002 is closed; next task is P03-003, native OAuth system-browser callback
+  flow.
+
+## 2026-07-13 — P03-003 complete
+
+- Branch: `task/P03-003-native-oauth`.
+- Added PKCE system-browser authorization, exact callback/state/expiry guards,
+  Supabase code exchange, refresh, sign-out, secure credential persistence, and
+  shared auth fixtures.
+- Final head `25dfa49` passed Contracts `29256417229`, Web `29256417278`, Rust
+  `29256417182`, Mobile `29256418813`, Supabase `29256417598`, and Security
+  `29256417545`.
+- P03-003 is closed; next task is P03-004, device key generation, registration,
+  and capability discovery.
+
+## 2026-07-13 — P03-004 complete
+
+- Branch: `task/P03-004-device-keys`.
+- Added native key-provider IPC, process-local WebCrypto Ed25519 fallback,
+  capability discovery, authenticated `register-device` transport, and Rust
+  key-store boundary tests that never export private material.
+- Final head `8b93125` passed Contracts `29257022802`, Web `29257022741`, Rust
+  `29257022779`, Mobile `29257022868`, Supabase `29257022710`, and Security
+  `29257022743`.
+- P03-004 is closed; next task is P03-005, Rust service lifecycle and
+  authenticated local IPC.
+
+## 2026-07-13 — P03-005 complete
+
+- Branch: `task/P03-005-service-ipc`.
+- Added the Rust background-service lifecycle controller, orderly/idempotent
+  restart semantics, thread-safe local IPC boundary, constant-time secret
+  comparison, and unauthorized-request rejection before state mutation.
+- Final head `a5415ec` passed Contracts `29259876937`, Web `29259875499`, Rust
+  `29259874516`, Mobile `29259875478`, Supabase `29259875477`, and Security
+  `29259875143`.
+- P03-005 is closed; next task is P03-006, SQLite schema, migrations, and
+  repositories.

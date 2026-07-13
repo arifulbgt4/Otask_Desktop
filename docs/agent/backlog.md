@@ -19,46 +19,62 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P00-003` Add `MASTER_SPEC.md` and ADR-001 through ADR-010. Done when decisions are version-controlled and linked from README.
 - `[DONE] P00-004` Create backlog, state, blocker, continuation-log, evidence templates and state schema. Done when machine-readable state validates.
 - `[DONE] P00-005` Configure pnpm workspace/Turborepo for web, desktop frontend, contracts, and VS Code extension. Done when frozen install and empty builds succeed.
-- `[BLOCKED] P00-006` Create Rust workspace and baseline crates. Scaffold exists; cargo fmt, clippy, and tests await Rust installation.
-- `[BLOCKED] P00-007` Create Flutter mobile shell and analysis options. Scaffold exists; Android/iOS generation and tests await Flutter/Xcode toolchain.
-- `[BLOCKED] P00-008` Create Supabase local project, migrations/tests, and environment templates. Structure exists; local reset awaits Supabase CLI.
+- `[DONE] P00-006` Create Rust workspace and baseline crates. Local Cargo is unavailable, but the Rust GitHub Actions formatter, clippy, and test job passed.
+- `[DONE] P00-007` Create Flutter mobile shell and analysis options. Local Flutter is unavailable, but the macOS Flutter analyze and widget-test job passed.
+- `[DONE] P00-008` Create Supabase local project, migrations/tests, and environment templates. Local CLI is unavailable, but the Supabase start/reset job passed.
 - `[DONE] P00-009` Add conventional commits, PR template, CODEOWNERS, and issue templates. Done when PRs capture task, checks, evidence, and risks.
-- `[IN_PROGRESS] P00-010` Add baseline GitHub Actions for contracts, web, Rust, Flutter, and Supabase. Workflows exist; remote green checks remain required.
+- `[DONE] P00-010` Add baseline GitHub Actions for contracts, web, Rust, Flutter, Supabase, and security. All six checks passed for commit `9265c2f`.
 
 ## P01 — Contracts, domain model, and design system
 
-- `P01-001` Define IDs, timestamps, revisions, error envelope, and event envelope.
-- `P01-002` Define `TaskPlan` and every v1 step schema with strict additional-property rules.
-- `P01-003` Define execution state/event schemas and legal transitions.
-- `P01-004` Define schedule, approval, device, grant, evidence, artifact, and clipboard schemas.
-- `P01-005` Generate or test-map TypeScript, Rust, and Dart models.
-- `P01-006` Create accessible GUI design tokens and risk/status semantics.
-- `P01-007` Create route/navigation maps and wireframe-level screen states.
-- `P01-008` Add compatibility and fixture tests.
+- `[DONE] P01-001` Define IDs, timestamps, revisions, error envelope, and event envelope. Local fixtures and all six required CI jobs pass for `58770ba`.
+- `[DONE] P01-002` Define `TaskPlan` and every v1 step schema with strict additional-property rules. Local schema/graph fixtures and all six required CI jobs pass for `4385afb`.
+- `[DONE] P01-003` Define execution state/event schemas and legal transitions. Local transition fixtures and all six required CI jobs pass for `1d5b8fa`.
+- `[DONE] P01-004` Define schedule, approval, device, grant, evidence, artifact, and clipboard schemas. Local versioned fixtures and all six required CI jobs pass for `e5e0eb7`.
+- `[DONE] P01-005` Generate or test-map TypeScript, Rust, and Dart models. Mapping guard and all six required CI jobs pass for `15b5dfb`.
+- `[DONE] P01-006` Create accessible GUI design tokens and risk/status semantics. Local WCAG/token checks and all six required CI jobs pass for `ad705a2`.
+- `[DONE] P01-007` Create route/navigation maps and wireframe-level screen states. Local route guard and all six required CI jobs pass for `8ead806`.
+- `[DONE] P01-008` Add compatibility and fixture tests. Compatibility/mapping guards and all six required CI jobs pass for `9bce754`.
 
 ## P02 — Supabase backend and identity
 
-- `P02-001` Create profile/device/key/capability migrations and RLS.
-- `P02-002` Create workflow/version/schedule migrations with immutable-version constraints.
-- `P02-003` Create run/event/log/artifact/approval/grant migrations.
-- `P02-004` Create clipboard/model/release/learning/audit tables.
-- `P02-005` Implement and test RLS for every exposed table.
-- `P02-006` Configure Google OAuth for local/dev and callback handling.
-- `P02-007` Implement device registration and pairing challenge functions.
-- `P02-008` Implement key rotation and device revocation.
-- `P02-009` Implement signed plan/approval/target-bound run grants.
-- `P02-010` Implement terminal-session initialization/signaling records.
-- `P02-011` Implement release metadata and signed-download URL function.
-- `P02-012` Add local reset/seed/RLS/Edge Function CI suite.
+- `[DONE] P02-001` Create profile/device/key/capability migrations and RLS. Migration, pgTAP suite, and all six required CI jobs pass for `1996fc4`.
+- `[DONE] P02-002` Create workflow/version/schedule migrations with immutable-version constraints. Migration/pgTAP suite and all six required CI jobs pass for `dc6ca42`.
+- `[DONE] P02-003` Create run/event/log/artifact/approval/grant migrations. Migration/pgTAP suite and all six required CI jobs pass for `6029b24`.
+- `[DONE] P02-004` Create clipboard/model/release/learning/audit tables. Migration/pgTAP suite and all six required CI jobs pass for `1de090f`.
+- `[DONE] P02-005` Implement and test RLS for every exposed table. Policy inventory, two-user runtime fixtures, and all six required CI jobs pass for `4c53cc3`.
+- `[DONE] P02-006` Configure Google OAuth for local/dev and callback handling. Env-backed provider, exact redirect/PKCE callback fixtures, native tests, and all six required CI jobs pass for `1ed4160`.
+- `[DONE] P02-007` Implement device registration and pairing challenge functions. Same-user Ed25519 proof, hashed expiry/attempt limits, pgTAP, function fixtures, and all six required CI jobs pass for `0717f7d`.
+- `[DONE] P02-008` Implement key rotation and device revocation. Service-only atomic key rotation/revocation, old-key/grant invalidation, audit events, pgTAP, and all six required CI jobs pass for `62ceb1f`.
+- `[DONE] P02-009` Implement signed plan/approval/target-bound run grants. Service-only atomic issuance/consumption, HMAC signatures, approval/plan/target binding, replay/expiry rejection, pgTAP/runtime fixtures, and all six required CI jobs pass for `d51a8a4`.
+- `[DONE] P02-010` Implement terminal-session initialization/signaling records. Owner-scoped session state, append-only Realtime signaling, one-time terminal-grant initialization, payload hashing, sequencing, close transition, pgTAP/runtime fixtures, and all six required CI jobs pass for `d5e6f2c`.
+- `[DONE] P02-011` Implement release metadata and signed-download URL function.
+  Final head `08d91de`; all six required checks passed, including the
+  published/draft/revoked/missing artifact runtime gate.
+- `[DONE] P02-012` Add local reset/seed/RLS/Edge Function CI suite. Final head
+  `478706e`; all six required checks passed after clean reset, seed, pgTAP,
+  Edge Function guard, and stop.
 
 ## P03 — Desktop GUI and trusted service foundation
 
-- `P03-001` Create Tauri 2 React/Vite shell and navigation.
-- `P03-002` Implement secure settings and platform credential storage.
-- `P03-003` Implement native OAuth system-browser callback flow.
-- `P03-004` Implement device key generation, registration, and capabilities.
-- `P03-005` Create Rust service lifecycle and authenticated local IPC.
-- `P03-006` Create SQLite schema/migrations/repositories.
+- `[DONE] P03-001` Create Tauri 2 React/Vite shell and navigation. Final head
+  `50d4357`; Web CI built, typechecked, linted, and tested the desktop shell,
+  and all six required checks passed.
+- `[DONE] P03-002` Implement secure settings and platform credential storage.
+  Final head `7b0d7e7`; allowlisted credential IPC, memory-only dev fallback,
+  Rust validation tests, and all six required checks passed.
+- `[DONE] P03-003` Implement native OAuth system-browser callback flow. Final
+  head `25dfa49`; PKCE, callback/state/expiry validation, session exchange,
+  refresh/sign-out, and all six required checks passed.
+- `[DONE] P03-004` Implement device key generation, registration, and capabilities.
+  Final head `8b93125`; native key-provider IPC, process-local WebCrypto
+  fallback, capability discovery, authenticated registration, and all six
+  required checks passed.
+- `[DONE] P03-005` Create Rust service lifecycle and authenticated local IPC.
+  Final head `a5415ec`; orderly service lifecycle, restart-safe controller,
+  constant-time local IPC authentication, unauthorized rejection, and all six
+  required checks passed.
+- `[IN_PROGRESS] P03-006` Create SQLite schema/migrations/repositories.
 - `P03-007` Implement Dashboard, Devices, Settings, and Sync Health screens.
 - `P03-008` Implement startup/login behavior per platform.
 - `P03-009` Implement signed updater plumbing in test mode.

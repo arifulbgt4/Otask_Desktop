@@ -1,0 +1,23 @@
+{
+  "name": "@otask/auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/callback.d.ts",
+      "import": "./src/callback.mjs"
+    },
+    "./oauth": {
+      "types": "./src/oauth.d.ts",
+      "import": "./src/oauth.mjs"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/check.mjs",
+    "typecheck": "node scripts/check.mjs",
+    "lint": "node scripts/check.mjs",
+    "test": "node scripts/check.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}
