@@ -1,0 +1,10 @@
+{
+  "schema": "error-envelope.schema.json",
+  "valid": false,
+  "value": {
+    "ok": true,
+    "error": { "code": "bad code", "message": "", "retryable": "no" },
+    "request_id": "not-an-otask-id",
+    "occurred_at": "2026-07-13 08:00:00"
+  }
+}

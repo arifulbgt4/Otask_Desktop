@@ -19,18 +19,18 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P00-003` Add `MASTER_SPEC.md` and ADR-001 through ADR-010. Done when decisions are version-controlled and linked from README.
 - `[DONE] P00-004` Create backlog, state, blocker, continuation-log, evidence templates and state schema. Done when machine-readable state validates.
 - `[DONE] P00-005` Configure pnpm workspace/Turborepo for web, desktop frontend, contracts, and VS Code extension. Done when frozen install and empty builds succeed.
-- `[BLOCKED] P00-006` Create Rust workspace and baseline crates. Scaffold exists; cargo fmt, clippy, and tests await Rust installation.
-- `[BLOCKED] P00-007` Create Flutter mobile shell and analysis options. Scaffold exists; Android/iOS generation and tests await Flutter/Xcode toolchain.
-- `[BLOCKED] P00-008` Create Supabase local project, migrations/tests, and environment templates. Structure exists; local reset awaits Supabase CLI.
+- `[DONE] P00-006` Create Rust workspace and baseline crates. Local Cargo is unavailable, but the Rust GitHub Actions formatter, clippy, and test job passed.
+- `[DONE] P00-007` Create Flutter mobile shell and analysis options. Local Flutter is unavailable, but the macOS Flutter analyze and widget-test job passed.
+- `[DONE] P00-008` Create Supabase local project, migrations/tests, and environment templates. Local CLI is unavailable, but the Supabase start/reset job passed.
 - `[DONE] P00-009` Add conventional commits, PR template, CODEOWNERS, and issue templates. Done when PRs capture task, checks, evidence, and risks.
-- `[IN_PROGRESS] P00-010` Add baseline GitHub Actions for contracts, web, Rust, Flutter, and Supabase. Workflows exist; remote green checks remain required.
+- `[DONE] P00-010` Add baseline GitHub Actions for contracts, web, Rust, Flutter, Supabase, and security. All six checks passed for commit `9265c2f`.
 
 ## P01 — Contracts, domain model, and design system
 
-- `P01-001` Define IDs, timestamps, revisions, error envelope, and event envelope.
-- `P01-002` Define `TaskPlan` and every v1 step schema with strict additional-property rules.
-- `P01-003` Define execution state/event schemas and legal transitions.
-- `P01-004` Define schedule, approval, device, grant, evidence, artifact, and clipboard schemas.
+- `[DONE] P01-001` Define IDs, timestamps, revisions, error envelope, and event envelope. Local fixtures and all six required CI jobs pass for `58770ba`.
+- `[DONE] P01-002` Define `TaskPlan` and every v1 step schema with strict additional-property rules. Local schema/graph fixtures and all six required CI jobs pass for `4385afb`.
+- `[DONE] P01-003` Define execution state/event schemas and legal transitions. Local transition fixtures and all six required CI jobs pass for `1d5b8fa`.
+- `[IN_PROGRESS] P01-004` Define schedule, approval, device, grant, evidence, artifact, and clipboard schemas.
 - `P01-005` Generate or test-map TypeScript, Rust, and Dart models.
 - `P01-006` Create accessible GUI design tokens and risk/status semantics.
 - `P01-007` Create route/navigation maps and wireframe-level screen states.
