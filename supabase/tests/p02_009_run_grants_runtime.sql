@@ -1,6 +1,6 @@
 begin;
 
-select plan(18);
+select plan(10);
 
 insert into auth.users (id, aud, role, email, encrypted_password, created_at, updated_at)
 values ('00000000-0000-0000-0000-000000000209', 'authenticated', 'authenticated', 'p02009@example.invalid', '', now(), now());
