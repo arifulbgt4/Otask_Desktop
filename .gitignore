@@ -18,6 +18,9 @@ target/
 **/ios/Pods/
 **/android/.gradle/
 **/android/local.properties
+apps/mobile/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+apps/mobile/ios/Flutter/
+apps/mobile/ios/Runner/GeneratedPluginRegistrant.*
 
 # Local services and environments
 .env

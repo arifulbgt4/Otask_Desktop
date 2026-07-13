@@ -1,0 +1,16 @@
+{
+  "schema": "clipboard.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "clipboard_id": "clipboard_01JTEST00000001",
+    "device_id": "device_01JTEST00000001",
+    "content_hash": "raw-secret",
+    "sensitivity": "secret",
+    "payload_ref": "data:text/plain,secret",
+    "expires_at": "tomorrow",
+    "pinned": false,
+    "deleted": false,
+    "revision": 1
+  }
+}
