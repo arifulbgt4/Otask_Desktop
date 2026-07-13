@@ -1,0 +1,16 @@
+{
+  "schema": "approval.schema.json",
+  "valid": true,
+  "value": {
+    "schema_version": "1.0",
+    "approval_id": "approval_01JTEST00000001",
+    "run_id": "run_01JTEST00000001",
+    "decision": "approved",
+    "scope": "run",
+    "plan_hash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "decided_at": "2026-07-13T09:00:00Z",
+    "expires_at": "2026-07-13T10:00:00Z",
+    "revoked": false,
+    "revision": 1
+  }
+}
