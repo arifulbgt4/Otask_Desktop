@@ -18,6 +18,8 @@
   screen-state contracts for desktop, mobile, and web surfaces.
 - P01-008: added strict contract compatibility policy, version fixtures, and
   cross-language manifest drift checks.
+- P02-001: added Supabase profiles/devices/device-keys/capabilities migration,
+  owner-scoped RLS, and pgTAP policy tests.
 
 ## Unreleased
 

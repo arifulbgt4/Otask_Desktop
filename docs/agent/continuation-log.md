@@ -113,6 +113,15 @@
   `docs/evidence/P01-PHASE-EXIT.md`.
 - Next task: `P02-001`, profiles/devices/device-key schema and RLS foundation.
 
+## 2026-07-13 — P02-001 implementation
+
+- Branch: `task/P02-001-identity-devices-rls`.
+- Added the first Supabase migration for profiles, devices, public keys,
+  capabilities, owner-scoped RLS, constraints, indexes, and pgTAP tests.
+- CI now executes `supabase test db`; local Supabase CLI is unavailable.
+- Next action: inspect the remote Supabase/Rust/Mobile/Contracts/Web/Security
+  checks, then close P02-001 or fix the migration/test failure.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
