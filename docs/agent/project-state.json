@@ -4,8 +4,8 @@
   "current_task": "P03-005",
   "task_status": "in_progress",
   "last_completed_task": "P03-004",
-  "branch": "task/P03-004-device-keys",
-  "last_commit": "8b93125",
+  "branch": "task/P03-005-service-ipc",
+  "last_commit": "f98f2fb",
   "required_checks": {
     "contracts": "pending",
     "web": "pending",
@@ -19,5 +19,5 @@
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
   "next_ready_tasks": ["P03-005"],
-  "updated_at": "2026-07-13T20:50:00+06:00"
+  "updated_at": "2026-07-13T20:58:00+06:00"
 }
