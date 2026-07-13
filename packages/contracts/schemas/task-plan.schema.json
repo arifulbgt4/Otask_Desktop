@@ -1,0 +1,517 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/task-plan.schema.json",
+  "title": "OTask executable TaskPlan",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "plan_id",
+    "version",
+    "title",
+    "target",
+    "approval_mode",
+    "timeout_seconds",
+    "steps"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "plan_id": {
+      "type": "string",
+      "pattern": "^plan_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$",
+      "minLength": 13,
+      "maxLength": 101
+    },
+    "version": { "type": "integer", "minimum": 1, "maximum": 2147483647 },
+    "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "target": {
+      "type": "object",
+      "required": ["device_id"],
+      "properties": {
+        "device_id": {
+          "type": "string",
+          "pattern": "^device_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$",
+          "minLength": 14,
+          "maxLength": 102
+        }
+      },
+      "additionalProperties": false
+    },
+    "approval_mode": {
+      "enum": ["none", "first_run_and_risk_change", "always"]
+    },
+    "timeout_seconds": { "type": "integer", "minimum": 1, "maximum": 86400 },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "items": { "$ref": "#/$defs/step" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stepId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{0,47}$",
+      "minLength": 1,
+      "maxLength": 48
+    },
+    "dependsOn": {
+      "type": "array",
+      "maxItems": 30,
+      "items": { "$ref": "#/$defs/stepId" },
+      "uniqueItems": true
+    },
+    "successCriteria": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "capture_stdout": { "type": "boolean" },
+        "capture_stderr": { "type": "boolean" },
+        "capture_screenshot": { "type": "boolean" },
+        "redact": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "stepBase": {
+      "type": "object",
+      "required": ["id", "type", "parameters", "success_criteria"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stepId" },
+        "type": { "type": "string" },
+        "depends_on": { "$ref": "#/$defs/dependsOn" },
+        "parameters": { "type": "object" },
+        "success_criteria": { "type": "object" },
+        "timeout_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      },
+      "additionalProperties": false
+    },
+    "openWorkspace": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "open_workspace" },
+            "parameters": {
+              "type": "object",
+              "required": ["workspace_ref"],
+              "properties": {
+                "workspace_ref": {
+                  "type": "string",
+                  "pattern": "^workspace_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["path_exists"],
+              "properties": { "path_exists": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "openApplication": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "open_application" },
+            "parameters": {
+              "type": "object",
+              "required": ["application_id"],
+              "properties": {
+                "application_id": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9._-]{1,63}$"
+                }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["launch_requested"],
+              "properties": { "launch_requested": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "runCommandTemplate": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "run_command_template" },
+            "parameters": {
+              "type": "object",
+              "required": ["template_ref", "workspace_ref", "arguments"],
+              "properties": {
+                "template_ref": {
+                  "type": "string",
+                  "pattern": "^template_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                },
+                "workspace_ref": {
+                  "type": "string",
+                  "pattern": "^workspace_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": ["string", "number", "boolean"]
+                  }
+                }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "properties": {
+                "exit_code": { "type": "integer" },
+                "process_started": { "type": "boolean" }
+              },
+              "anyOf": [
+                {
+                  "required": ["exit_code"],
+                  "properties": { "exit_code": { "const": 0 } }
+                },
+                {
+                  "required": ["process_started"],
+                  "properties": { "process_started": { "const": true } }
+                }
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "runPackageScript": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "run_package_script" },
+            "parameters": {
+              "type": "object",
+              "required": ["workspace_ref", "package_manager", "script"],
+              "properties": {
+                "workspace_ref": {
+                  "type": "string",
+                  "pattern": "^workspace_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                },
+                "package_manager": { "enum": ["npm", "pnpm", "yarn", "bun"] },
+                "script": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9][a-zA-Z0-9:_./-]{0,127}$"
+                },
+                "arguments": {
+                  "type": "array",
+                  "maxItems": 20,
+                  "items": { "type": "string", "maxLength": 256 }
+                }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "properties": {
+                "exit_code": { "type": "integer" },
+                "process_started": { "type": "boolean" }
+              },
+              "anyOf": [
+                {
+                  "required": ["exit_code"],
+                  "properties": { "exit_code": { "const": 0 } }
+                },
+                {
+                  "required": ["process_started"],
+                  "properties": { "process_started": { "const": true } }
+                }
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "waitPort": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "wait_port" },
+            "parameters": {
+              "type": "object",
+              "required": ["host", "port"],
+              "properties": {
+                "host": { "enum": ["127.0.0.1", "localhost", "::1"] },
+                "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+                "expected_http_status": {
+                  "type": "integer",
+                  "minimum": 100,
+                  "maximum": 599
+                }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["reachable"],
+              "properties": { "reachable": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "waitProcess": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "wait_process" },
+            "parameters": {
+              "type": "object",
+              "required": ["process_ref", "expected_state"],
+              "properties": {
+                "process_ref": {
+                  "type": "string",
+                  "pattern": "^process_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                },
+                "expected_state": { "enum": ["running", "exited", "stopped"] }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["state_reached"],
+              "properties": { "state_reached": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "waitFile": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "wait_file" },
+            "parameters": {
+              "type": "object",
+              "required": ["path_ref", "condition"],
+              "properties": {
+                "path_ref": {
+                  "type": "string",
+                  "pattern": "^path_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                },
+                "condition": { "enum": ["exists", "modified"] }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["exists"],
+              "properties": { "exists": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "openUrl": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "open_url" },
+            "parameters": {
+              "type": "object",
+              "required": ["url"],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^https?://"
+                }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["launch_requested"],
+              "properties": { "launch_requested": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "copyClipboard": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "copy_clipboard" },
+            "parameters": {
+              "type": "object",
+              "required": ["sensitivity", "confirm_sensitive"],
+              "properties": {
+                "text": { "type": "string", "maxLength": 100000 },
+                "file_ref": {
+                  "type": "string",
+                  "pattern": "^artifact_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                },
+                "sensitivity": { "enum": ["public", "internal", "sensitive"] },
+                "confirm_sensitive": { "type": "boolean" }
+              },
+              "oneOf": [
+                {
+                  "required": ["text"],
+                  "properties": { "text": {} },
+                  "not": {
+                    "required": ["file_ref"],
+                    "properties": { "file_ref": {} }
+                  }
+                },
+                {
+                  "required": ["file_ref"],
+                  "properties": { "file_ref": {} },
+                  "not": { "required": ["text"], "properties": { "text": {} } }
+                }
+              ],
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["copied"],
+              "properties": { "copied": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "notify": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "notify" },
+            "parameters": {
+              "type": "object",
+              "required": ["title", "message", "channel"],
+              "properties": {
+                "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "channel": { "enum": ["local", "push", "both"] }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["delivered"],
+              "properties": { "delivered": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "delay": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "delay" },
+            "parameters": {
+              "type": "object",
+              "required": ["duration_seconds"],
+              "properties": {
+                "duration_seconds": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 86400
+                }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["elapsed"],
+              "properties": { "elapsed": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "collectArtifact": {
+      "allOf": [
+        { "$ref": "#/$defs/stepBase" },
+        {
+          "properties": {
+            "type": { "const": "collect_artifact" },
+            "parameters": {
+              "type": "object",
+              "required": ["artifact_ref", "kind", "max_bytes", "redact"],
+              "properties": {
+                "artifact_ref": {
+                  "type": "string",
+                  "pattern": "^artifact_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+                },
+                "kind": { "enum": ["log", "file", "screenshot"] },
+                "max_bytes": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 104857600
+                },
+                "redact": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            },
+            "success_criteria": {
+              "type": "object",
+              "required": ["captured"],
+              "properties": { "captured": { "const": true } },
+              "additionalProperties": false
+            }
+          }
+        }
+      ]
+    },
+    "step": {
+      "oneOf": [
+        { "$ref": "#/$defs/openWorkspace" },
+        { "$ref": "#/$defs/openApplication" },
+        { "$ref": "#/$defs/runCommandTemplate" },
+        { "$ref": "#/$defs/runPackageScript" },
+        { "$ref": "#/$defs/waitPort" },
+        { "$ref": "#/$defs/waitProcess" },
+        { "$ref": "#/$defs/waitFile" },
+        { "$ref": "#/$defs/openUrl" },
+        { "$ref": "#/$defs/copyClipboard" },
+        { "$ref": "#/$defs/notify" },
+        { "$ref": "#/$defs/delay" },
+        { "$ref": "#/$defs/collectArtifact" }
+      ]
+    }
+  }
+}

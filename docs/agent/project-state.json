@@ -1,26 +1,23 @@
 {
   "spec_version": "1.0",
-  "phase": "P00_GOVERNANCE_BOOTSTRAP",
-  "current_task": "P00-010",
+  "phase": "P01_CONTRACTS_DOMAIN_DESIGN",
+  "current_task": "P01-008",
   "task_status": "in_progress",
-  "last_completed_task": "P00-009",
-  "branch": "master",
-  "last_commit": "d936664",
+  "last_completed_task": "P01-007",
+  "branch": "task/P01-007-route-maps",
+  "last_commit": "8ead806",
   "required_checks": {
-    "contracts": "pending",
-    "web": "pending",
-    "rust": "blocked",
-    "desktop": "pending",
-    "mobile": "blocked",
-    "supabase": "blocked",
-    "security": "pending"
+    "contracts": "success",
+    "web": "success",
+    "rust": "success",
+    "desktop": "not_applicable",
+    "mobile": "success",
+    "supabase": "success",
+    "security": "success"
   },
   "blockers": [
-    "Rust/Cargo is not installed in the current environment.",
-    "Flutter is not installed in the current environment.",
-    "Supabase CLI is not installed in the current environment.",
-    "GitHub Actions checks for d936664 are pending and cannot be inspected from the current environment."
+    "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": [],
-  "updated_at": "2026-07-13T00:00:00+06:00"
+  "next_ready_tasks": ["P01-008"],
+  "updated_at": "2026-07-13T18:15:00+06:00"
 }
