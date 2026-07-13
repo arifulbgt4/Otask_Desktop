@@ -203,6 +203,17 @@
 - P02-008 is closed; next task is P02-009, signed plan/approval/target-bound
   run grants.
 
+## 2026-07-14 — P02-009 complete
+
+- Branch: `task/P02-009-run-grants`.
+- Added service-only signed run-grant issuance/consumption, HMAC canonical
+  envelopes, approval/plan/target binding, replay/expiry/revocation checks,
+  Edge Functions, and pgTAP/runtime coverage.
+- All six required checks passed for final head `d51a8a4`; Supabase reset,
+  pgTAP, and all 10 run-grant runtime assertions passed.
+- P02-009 is closed; next task is P02-010, terminal-session
+  initialization/signaling records.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
