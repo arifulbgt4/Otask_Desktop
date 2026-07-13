@@ -39,7 +39,7 @@ commit, and green required CI before it is marked `DONE`.
 ## P02 — Supabase backend and identity
 
 - `[DONE] P02-001` Create profile/device/key/capability migrations and RLS. Migration, pgTAP suite, and all six required CI jobs pass for `1996fc4`.
-- `[IN_PROGRESS] P02-002` Create workflow/version/schedule migrations with immutable-version constraints.
+- `[IN_PROGRESS] P02-002` Create workflow/version/schedule migrations with immutable-version constraints. Migration/pgTAP files added; remote CI is pending.
 - `P02-003` Create run/event/log/artifact/approval/grant migrations.
 - `P02-004` Create clipboard/model/release/learning/audit tables.
 - `P02-005` Implement and test RLS for every exposed table.

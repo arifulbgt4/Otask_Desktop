@@ -20,6 +20,8 @@
   cross-language manifest drift checks.
 - P02-001: added Supabase profiles/devices/device-keys/capabilities migration,
   owner-scoped RLS, and pgTAP policy tests.
+- P02-002: added workflow/version/schedule migrations with immutable plan
+  versions, target binding, owner/device RLS, and pgTAP tests.
 
 ## Unreleased
 

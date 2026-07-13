@@ -128,6 +128,13 @@
   completed successfully.
 - P02-001 is done; state now points to `P02-002`.
 
+## 2026-07-13 — P02-002 implementation
+
+- Branch: `task/P02-002-workflow-schedule-migrations`.
+- Added immutable workflow-version and target-bound schedule migration with
+  owner/device RLS and pgTAP tests.
+- Remote CI is pending; inspect the Supabase test log before marking done.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
