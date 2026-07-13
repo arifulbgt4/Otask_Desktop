@@ -81,7 +81,9 @@ begin
   if p_nonce is null or p_nonce !~ '^[A-Za-z0-9_-]{16,128}$' then
     raise exception 'grant nonce is invalid' using errcode = '22023';
   end if;
-  if p_signature is null or p_signature !~ '^[A-Za-z0-9_-]{43,256}$' then
+  if p_signature is null
+     or char_length(p_signature) not between 43 and 256
+     or p_signature !~ '^[A-Za-z0-9_-]+$' then
     raise exception 'grant signature is invalid' using errcode = '22023';
   end if;
 
@@ -256,6 +258,7 @@ revoke execute on function public.issue_run_grant(text, uuid, text, text, text, 
 revoke execute on function public.consume_run_grant(text, text, text, text) from public, anon, authenticated;
 grant execute on function public.issue_run_grant(text, uuid, text, text, text, jsonb, timestamptz, timestamptz, text, text) to service_role;
 grant execute on function public.consume_run_grant(text, text, text, text) to service_role;
+grant select, insert, update on public.session_grants to service_role;
 
 comment on column public.session_grants.used_at is 'One-time consumption marker; a consumed grant cannot be replayed.';
 comment on function public.issue_run_grant(text, uuid, text, text, text, jsonb, timestamptz, timestamptz, text, text) is 'Service-only atomic issuance of a short-lived, approved, target-bound run grant.';
