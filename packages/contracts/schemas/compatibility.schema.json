@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/compatibility.schema.json",
+  "title": "OTask schema compatibility manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "current_version",
+    "supported_versions",
+    "mode"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "current_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "supported_versions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^\\d+\\.\\d+$" }
+    },
+    "mode": { "enum": ["strict", "additive"] }
+  },
+  "additionalProperties": false
+}
