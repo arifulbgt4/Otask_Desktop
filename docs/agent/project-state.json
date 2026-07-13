@@ -1,11 +1,11 @@
 {
   "spec_version": "1.0",
   "phase": "P02_SUPABASE_BACKEND_IDENTITY",
-  "current_task": "P02-008",
+  "current_task": "P02-009",
   "task_status": "in_progress",
-  "last_completed_task": "P02-007",
+  "last_completed_task": "P02-008",
   "branch": "task/P02-008-key-rotation-revocation",
-  "last_commit": "f010920",
+  "last_commit": "62ceb1f",
   "required_checks": {
     "contracts": "success",
     "web": "success",
@@ -18,6 +18,6 @@
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": ["P02-008"],
-  "updated_at": "2026-07-14T04:45:00+06:00"
+  "next_ready_tasks": ["P02-009"],
+  "updated_at": "2026-07-14T06:15:00+06:00"
 }

@@ -198,8 +198,10 @@
 - Added service-only atomic key-rotation/revocation SQL functions, authenticated
   Edge Function wrappers, revocation audit/grant invalidation, and validation /
   pgTAP coverage.
-- Remote CI is pending; inspect Supabase function privilege tests before
-  closing.
+- All six required checks passed for final head `62ceb1f`; Supabase reset and
+  pgTAP service-role privilege suites passed.
+- P02-008 is closed; next task is P02-009, signed plan/approval/target-bound
+  run grants.
 
 ## 2026-07-13 — P01-007 implementation
 
