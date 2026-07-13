@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/event-envelope.schema.json",
+  "title": "OTask event envelope",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "revision",
+    "occurred_at",
+    "producer",
+    "trace_id",
+    "payload"
+  ],
+  "properties": {
+    "event_id": { "$ref": "common.schema.json#/$defs/otaskId" },
+    "event_type": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){1,5}$",
+      "maxLength": 128
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "device",
+        "workflow",
+        "schedule",
+        "run",
+        "approval",
+        "terminal_session",
+        "artifact"
+      ]
+    },
+    "aggregate_id": { "$ref": "common.schema.json#/$defs/otaskId" },
+    "revision": { "$ref": "common.schema.json#/$defs/revision" },
+    "occurred_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "producer": { "enum": ["desktop", "mobile", "web", "cloud"] },
+    "trace_id": { "$ref": "common.schema.json#/$defs/traceId" },
+    "payload": { "$ref": "common.schema.json#/$defs/jsonObject" }
+  },
+  "additionalProperties": false
+}
