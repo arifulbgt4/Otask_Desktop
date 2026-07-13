@@ -1,0 +1,10 @@
+{
+  "schema": "execution-state.schema.json",
+  "valid": false,
+  "transitions": [
+    { "from": "draft", "to": "running" },
+    { "from": "success", "to": "queued" },
+    { "from": "synced", "to": "running" }
+  ],
+  "value": { "from": "success", "to": "queued" }
+}
