@@ -28,3 +28,12 @@
 - Remote validation for `58770ba` passed Contracts, Web, Rust, Mobile,
   Supabase, and Security. P01-001 is done.
 - Next task: `P01-002`, the strict executable `TaskPlan` and v1 step schemas.
+
+## 2026-07-13 — P01-002 implementation
+
+- Branch: `task/P01-002-taskplan-schemas`.
+- Added the versioned executable TaskPlan schema, all twelve v1 typed steps,
+  bounded parameters/evidence controls, and dependency graph validation.
+- Local contract validation passes with seven fixtures; remote CI is pending.
+- Next action: inspect branch checks, then close P01-002 or fix the schema
+  boundary before selecting P01-003.
