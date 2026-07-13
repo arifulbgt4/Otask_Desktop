@@ -259,6 +259,9 @@ revoke execute on function public.consume_run_grant(text, text, text, text) from
 grant execute on function public.issue_run_grant(text, uuid, text, text, text, jsonb, timestamptz, timestamptz, text, text) to service_role;
 grant execute on function public.consume_run_grant(text, text, text, text) to service_role;
 grant select, insert, update on public.session_grants to service_role;
+grant select on public.devices, public.device_keys, public.device_pairing_challenges to service_role;
+grant insert on public.devices, public.device_keys, public.device_pairing_challenges to service_role;
+grant update on public.devices, public.device_pairing_challenges to service_role;
 
 comment on column public.session_grants.used_at is 'One-time consumption marker; a consumed grant cannot be replayed.';
 comment on function public.issue_run_grant(text, uuid, text, text, text, jsonb, timestamptz, timestamptz, text, text) is 'Service-only atomic issuance of a short-lived, approved, target-bound run grant.';
