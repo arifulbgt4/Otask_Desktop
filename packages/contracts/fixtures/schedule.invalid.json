@@ -1,0 +1,22 @@
+{
+  "schema": "schedule.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "schedule_id": "schedule_01JTEST00000001",
+    "workflow_version_id": "workflow_version_01JTEST00000001",
+    "target_device_id": "device_01JTEST00000001",
+    "timezone": "Dhaka",
+    "trigger": { "kind": "once", "at": "2026-07-14T03:00:00Z" },
+    "approval_mode": "never",
+    "lateness_policy": "skip",
+    "retry_policy": {
+      "max_attempts": 99,
+      "backoff_seconds": 0,
+      "retryable_errors": []
+    },
+    "preconditions": { "requires_online": true, "requires_ac_power": false },
+    "enabled": true,
+    "revision": -1
+  }
+}
