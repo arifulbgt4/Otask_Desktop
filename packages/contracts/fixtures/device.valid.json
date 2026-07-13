@@ -1,0 +1,23 @@
+{
+  "schema": "device.schema.json",
+  "valid": true,
+  "value": {
+    "schema_version": "1.0",
+    "device_id": "device_01JTEST00000001",
+    "user_id": "user_01JTEST00000001",
+    "name": "Ariful Mac",
+    "platform": "macos",
+    "architecture": "arm64",
+    "app_version": "0.1.0",
+    "capabilities": {
+      "workflow_execution": true,
+      "pty": true,
+      "webrtc": true,
+      "clipboard": true
+    },
+    "status": "trusted",
+    "last_seen_at": "2026-07-13T09:00:00Z",
+    "key_version": 2,
+    "revision": 4
+  }
+}

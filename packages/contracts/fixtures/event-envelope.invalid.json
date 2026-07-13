@@ -1,0 +1,16 @@
+{
+  "schema": "event-envelope.schema.json",
+  "valid": false,
+  "value": {
+    "event_id": "event_01JTEST00000001",
+    "event_type": "run state changed",
+    "aggregate_type": "run",
+    "aggregate_id": "run_01JTEST00000001",
+    "revision": -1,
+    "occurred_at": "2026-07-13T08:00:00Z",
+    "producer": "model",
+    "trace_id": "trace_01JTEST00000001",
+    "payload": {},
+    "unexpected": true
+  }
+}

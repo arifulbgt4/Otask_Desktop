@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/device.schema.json",
+  "title": "OTask registered device",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "device_id",
+    "user_id",
+    "name",
+    "platform",
+    "architecture",
+    "app_version",
+    "capabilities",
+    "status",
+    "key_version",
+    "revision"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "device_id": {
+      "type": "string",
+      "pattern": "^device_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "user_id": {
+      "type": "string",
+      "pattern": "^user_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "platform": { "enum": ["macos", "windows", "linux", "android", "ios"] },
+    "architecture": { "enum": ["x64", "arm64", "armv7"] },
+    "app_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "capabilities": {
+      "type": "object",
+      "required": ["workflow_execution", "pty", "webrtc", "clipboard"],
+      "properties": {
+        "workflow_execution": { "type": "boolean" },
+        "pty": { "type": "boolean" },
+        "webrtc": { "type": "boolean" },
+        "clipboard": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "status": { "enum": ["pairing", "trusted", "offline", "revoked"] },
+    "last_seen_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$"
+    },
+    "key_version": { "type": "integer", "minimum": 1 },
+    "revision": { "$ref": "common.schema.json#/$defs/revision" }
+  },
+  "additionalProperties": false
+}
