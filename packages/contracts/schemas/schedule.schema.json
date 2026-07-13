@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/schedule.schema.json",
+  "title": "OTask schedule",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "schedule_id",
+    "workflow_version_id",
+    "target_device_id",
+    "timezone",
+    "trigger",
+    "approval_mode",
+    "lateness_policy",
+    "retry_policy",
+    "preconditions",
+    "enabled",
+    "revision"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "schedule_id": {
+      "type": "string",
+      "pattern": "^schedule_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "workflow_version_id": {
+      "type": "string",
+      "pattern": "^workflow_version_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "target_device_id": {
+      "type": "string",
+      "pattern": "^device_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "timezone": {
+      "type": "string",
+      "pattern": "^[A-Za-z]+(?:[._-][A-Za-z0-9]+)*/[A-Za-z0-9._+-]+$",
+      "maxLength": 64
+    },
+    "trigger": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["kind", "at"],
+          "properties": {
+            "kind": { "const": "once" },
+            "at": { "$ref": "common.schema.json#/$defs/timestamp" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["kind", "rrule"],
+          "properties": {
+            "kind": { "const": "recurrence" },
+            "rrule": {
+              "type": "string",
+              "pattern": "^FREQ=(DAILY|WEEKLY|MONTHLY)(;[A-Z_]+=([A-Za-z0-9_,-]+))*$",
+              "maxLength": 256
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "next_run_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$"
+    },
+    "approval_mode": {
+      "enum": ["always", "first_run", "risk_change", "preapproved"]
+    },
+    "lateness_policy": { "enum": ["skip", "run_immediately", "ask"] },
+    "retry_policy": {
+      "type": "object",
+      "required": ["max_attempts", "backoff_seconds", "retryable_errors"],
+      "properties": {
+        "max_attempts": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "backoff_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        },
+        "retryable_errors": {
+          "type": "array",
+          "maxItems": 20,
+          "items": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,63}$" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "preconditions": {
+      "type": "object",
+      "required": ["requires_online", "requires_ac_power"],
+      "properties": {
+        "requires_online": { "type": "boolean" },
+        "requires_ac_power": { "type": "boolean" },
+        "workspace_ref": {
+          "type": "string",
+          "pattern": "^workspace_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+        },
+        "minimum_app_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "enabled": { "type": "boolean" },
+    "revision": { "$ref": "common.schema.json#/$defs/revision" }
+  },
+  "additionalProperties": false
+}
