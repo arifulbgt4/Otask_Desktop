@@ -1,11 +1,11 @@
 {
   "spec_version": "1.0",
   "phase": "P02_SUPABASE_BACKEND_IDENTITY",
-  "current_task": "P02-005",
+  "current_task": "P02-006",
   "task_status": "in_progress",
-  "last_completed_task": "P02-004",
+  "last_completed_task": "P02-005",
   "branch": "task/P02-005-rls-hardening",
-  "last_commit": "63b2777",
+  "last_commit": "4c53cc3",
   "required_checks": {
     "contracts": "success",
     "web": "success",
@@ -18,6 +18,6 @@
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": ["P02-005"],
-  "updated_at": "2026-07-14T01:10:00+06:00"
+  "next_ready_tasks": ["P02-006"],
+  "updated_at": "2026-07-14T02:05:00+06:00"
 }

@@ -159,6 +159,13 @@
   and stop completed successfully. P02-004 is closed; next task is P02-005,
   the cross-user and revoked-device RLS test suite.
 
+## 2026-07-14 — P02-005 complete
+
+- Final head `4c53cc3` passed all six required checks. Supabase reset and both
+  RLS suites plus the two-user runtime fixture passed.
+- P02-005 is closed; next task is P02-006, Google OAuth local/dev callback
+  handling.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
