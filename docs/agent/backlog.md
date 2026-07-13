@@ -57,8 +57,10 @@ commit, and green required CI before it is marked `DONE`.
 
 ## P03 — Desktop GUI and trusted service foundation
 
-- `[IN_PROGRESS] P03-001` Create Tauri 2 React/Vite shell and navigation.
-- `P03-002` Implement secure settings and platform credential storage.
+- `[DONE] P03-001` Create Tauri 2 React/Vite shell and navigation. Final head
+  `50d4357`; Web CI built, typechecked, linted, and tested the desktop shell,
+  and all six required checks passed.
+- `[IN_PROGRESS] P03-002` Implement secure settings and platform credential storage.
 - `P03-003` Implement native OAuth system-browser callback flow.
 - `P03-004` Implement device key generation, registration, and capabilities.
 - `P03-005` Create Rust service lifecycle and authenticated local IPC.

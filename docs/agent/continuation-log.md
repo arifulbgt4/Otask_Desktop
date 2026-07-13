@@ -267,3 +267,15 @@
   `29252703475`.
 - P02 is complete; next task is P03-001, the Tauri 2 React/Vite shell and
   navigation.
+
+## 2026-07-13 — P03-001 complete
+
+- Branch: `task/P03-001-desktop-shell`.
+- Added the Tauri 2 configuration, React/Vite shell, typed nine-route
+  navigation, accessible sidebar/topbar, dashboard status states, and safe
+  empty states for the next desktop slices.
+- Final head `50d4357` passed Contracts `29254606332`, Web `29254607505`, Rust
+  `29254606739`, Mobile `29254606796`, Supabase `29254606535`, and Security
+  `29254606304`.
+- P03-001 is closed; next task is P03-002, secure settings and platform
+  credential storage abstraction.
