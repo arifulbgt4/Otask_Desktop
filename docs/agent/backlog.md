@@ -33,7 +33,7 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P01-004` Define schedule, approval, device, grant, evidence, artifact, and clipboard schemas. Local versioned fixtures and all six required CI jobs pass for `e5e0eb7`.
 - `[DONE] P01-005` Generate or test-map TypeScript, Rust, and Dart models. Mapping guard and all six required CI jobs pass for `15b5dfb`.
 - `[DONE] P01-006` Create accessible GUI design tokens and risk/status semantics. Local WCAG/token checks and all six required CI jobs pass for `ad705a2`.
-- `[IN_PROGRESS] P01-007` Create route/navigation maps and wireframe-level screen states.
+- `[IN_PROGRESS] P01-007` Create route/navigation maps and wireframe-level screen states. Local route guard passes; remote CI is pending.
 - `P01-008` Add compatibility and fixture tests.
 
 ## P02 — Supabase backend and identity

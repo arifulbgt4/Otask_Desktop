@@ -92,6 +92,16 @@
 - All six required checks for `ad705a2` passed.
 - P01-006 is done; state now points to `P01-007`.
 
+## 2026-07-13 — P01-007 implementation
+
+- Branch: `task/P01-007-route-maps`.
+- Added GUI route/navigation documentation, 22-route screen-state contract,
+  and a guard for required states, risk/cancellation rules, and prohibited
+  CLI/shell surfaces.
+- Local workspace checks pass; remote CI is pending.
+- Next action: inspect branch checks, then close P01-007 or fix the route
+  contract before selecting P01-008.
+
 ## 2026-07-13 — P01-006 implementation
 
 - Branch: `task/P01-006-design-tokens`.
