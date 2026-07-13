@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/execution-event.schema.json",
+  "title": "OTask execution event",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "event_id",
+    "run_id",
+    "sequence",
+    "event_type",
+    "to_state",
+    "actor",
+    "occurred_at",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "event_id": { "$ref": "common.schema.json#/$defs/otaskId" },
+    "run_id": {
+      "type": "string",
+      "pattern": "^run_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$",
+      "minLength": 12,
+      "maxLength": 100
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "event_type": {
+      "enum": [
+        "run.created",
+        "run.validated",
+        "run.state.changed",
+        "step.state.changed",
+        "run.evidence.finalized",
+        "run.synced",
+        "run.rejected",
+        "run.expired"
+      ]
+    },
+    "from_state": {
+      "type": ["string", "null"],
+      "enum": [
+        "draft",
+        "validated",
+        "awaiting_approval",
+        "queued",
+        "running",
+        "success",
+        "failed",
+        "cancelled",
+        "timeout",
+        "evidence_finalized",
+        "synced",
+        "rejected",
+        "expired",
+        "retry_queued",
+        null
+      ]
+    },
+    "to_state": {
+      "enum": [
+        "draft",
+        "validated",
+        "awaiting_approval",
+        "queued",
+        "running",
+        "success",
+        "failed",
+        "cancelled",
+        "timeout",
+        "evidence_finalized",
+        "synced",
+        "rejected",
+        "expired",
+        "retry_queued"
+      ]
+    },
+    "step_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{0,47}$" },
+    "actor": {
+      "enum": ["system", "user", "desktop", "mobile", "web", "cloud"]
+    },
+    "occurred_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "payload": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": false
+}

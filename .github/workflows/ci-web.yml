@@ -18,6 +18,10 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @otask/desktop-gui build
+      - run: pnpm --filter @otask/desktop-gui typecheck
+      - run: pnpm --filter @otask/desktop-gui lint
+      - run: pnpm --filter @otask/desktop-gui test
       - run: pnpm --filter @otask/web build
       - run: pnpm --filter @otask/web typecheck
       - run: pnpm --filter @otask/web lint

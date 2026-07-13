@@ -1,0 +1,15 @@
+{
+  "schema": "error-envelope.schema.json",
+  "valid": true,
+  "value": {
+    "ok": false,
+    "error": {
+      "code": "DEVICE_OFFLINE",
+      "message": "The target device is offline.",
+      "retryable": true,
+      "details": { "device_id": "device_01JTEST00000001" }
+    },
+    "request_id": "request_01JTEST00000001",
+    "occurred_at": "2026-07-13T08:00:00Z"
+  }
+}
