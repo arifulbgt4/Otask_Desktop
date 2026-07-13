@@ -1,0 +1,22 @@
+{
+  "schema": "run-grant.schema.json",
+  "valid": true,
+  "value": {
+    "schema_version": "1.0",
+    "grant_id": "grant_01JTEST00000001",
+    "grant_type": "run",
+    "user_id": "user_01JTEST00000001",
+    "device_id": "device_01JTEST00000001",
+    "run_id": "run_01JTEST00000001",
+    "plan_hash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "scope": {
+      "workspace_refs": ["workspace_01JTEST00000001"],
+      "step_ids": ["workspace", "package-script"],
+      "read_only": false
+    },
+    "issued_at": "2026-07-13T09:00:00Z",
+    "expires_at": "2026-07-13T09:05:00Z",
+    "nonce": "0123456789abcdef0123456789abcdef",
+    "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  }
+}

@@ -8,6 +8,8 @@
   schemas with dependency-cycle and unknown-property fixtures.
 - P01-003: added execution state/event schemas, legal transition table, and
   terminal/retry transition fixtures.
+- P01-004: added schedule, approval, device, run-grant, evidence, artifact,
+  and text-clipboard schemas with versioned examples.
 
 ## Unreleased
 

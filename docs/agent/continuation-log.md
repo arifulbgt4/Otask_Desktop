@@ -57,3 +57,12 @@
 
 - All six required checks for `1d5b8fa` passed, including Mobile and Supabase.
 - P01-003 is done; state now points to `P01-004`.
+
+## 2026-07-13 — P01-004 implementation
+
+- Branch: `task/P01-004-control-plane-contracts`.
+- Added seven control-plane contract schemas and fourteen positive/negative
+  fixtures (25 fixtures pass across the package).
+- Local contract validation passes; remote CI is pending.
+- Next action: inspect branch checks, then close P01-004 or fix the contract
+  boundary before selecting P01-005.

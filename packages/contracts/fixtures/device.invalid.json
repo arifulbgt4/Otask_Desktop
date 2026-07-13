@@ -1,0 +1,22 @@
+{
+  "schema": "device.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "device_id": "device_01JTEST00000001",
+    "user_id": "user_01JTEST00000001",
+    "name": "",
+    "platform": "chromeos",
+    "architecture": "x86",
+    "app_version": "latest",
+    "capabilities": {
+      "workflow_execution": true,
+      "pty": true,
+      "webrtc": true,
+      "clipboard": true
+    },
+    "status": "trusted",
+    "key_version": 0,
+    "revision": 1
+  }
+}
