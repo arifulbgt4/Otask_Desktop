@@ -66,8 +66,11 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P03-003` Implement native OAuth system-browser callback flow. Final
   head `25dfa49`; PKCE, callback/state/expiry validation, session exchange,
   refresh/sign-out, and all six required checks passed.
-- `[IN_PROGRESS] P03-004` Implement device key generation, registration, and capabilities.
-- `P03-005` Create Rust service lifecycle and authenticated local IPC.
+- `[DONE] P03-004` Implement device key generation, registration, and capabilities.
+  Final head `8b93125`; native key-provider IPC, process-local WebCrypto
+  fallback, capability discovery, authenticated registration, and all six
+  required checks passed.
+- `[IN_PROGRESS] P03-005` Create Rust service lifecycle and authenticated local IPC.
 - `P03-006` Create SQLite schema/migrations/repositories.
 - `P03-007` Implement Dashboard, Devices, Settings, and Sync Health screens.
 - `P03-008` Implement startup/login behavior per platform.

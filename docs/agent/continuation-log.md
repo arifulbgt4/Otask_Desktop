@@ -303,3 +303,15 @@
   `29256417545`.
 - P03-003 is closed; next task is P03-004, device key generation, registration,
   and capability discovery.
+
+## 2026-07-13 — P03-004 complete
+
+- Branch: `task/P03-004-device-keys`.
+- Added native key-provider IPC, process-local WebCrypto Ed25519 fallback,
+  capability discovery, authenticated `register-device` transport, and Rust
+  key-store boundary tests that never export private material.
+- Final head `8b93125` passed Contracts `29257022802`, Web `29257022741`, Rust
+  `29257022779`, Mobile `29257022868`, Supabase `29257022710`, and Security
+  `29257022743`.
+- P03-004 is closed; next task is P03-005, Rust service lifecycle and
+  authenticated local IPC.
