@@ -22,4 +22,5 @@ jobs:
       - run: pnpm device:check
       - run: pnpm grant:check
       - run: pnpm terminal:check
+      - run: pnpm release:check
       - run: pnpm --filter @otask/contracts check

@@ -40,6 +40,9 @@ verify_jwt = true
 [functions.append-terminal-signal]
 verify_jwt = true
 
+[functions.signed-download-url]
+verify_jwt = false
+
 [api]
 enabled = true
 port = 54321

@@ -5,6 +5,8 @@ const HASH_PATTERN = /^[a-f0-9]{64}$/;
 const BASE64URL_PATTERN = /^[A-Za-z0-9_-]+$/;
 const SESSION_ID_PATTERN = /^session_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$/;
 const SIGNAL_ID_PATTERN = /^signal_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$/;
+const RELEASE_ARTIFACT_ID_PATTERN =
+  /^release_artifact_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$/;
 
 function stableStringify(value) {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
@@ -269,4 +271,24 @@ export async function sha256Hex(value) {
   return [...new Uint8Array(digest)]
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
+}
+
+export function validateReleaseDownloadRequest(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) {
+    return "request body must be an object";
+  }
+  if (
+    typeof input.release_artifact_id !== "string" ||
+    !RELEASE_ARTIFACT_ID_PATTERN.test(input.release_artifact_id)
+  ) {
+    return "release_artifact_id is invalid";
+  }
+  if (
+    !Number.isInteger(input.expires_in) ||
+    input.expires_in < 30 ||
+    input.expires_in > 600
+  ) {
+    return "expires_in must be between 30 and 600";
+  }
+  return null;
 }
