@@ -20,4 +20,5 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm auth:check
       - run: pnpm device:check
+      - run: pnpm grant:check
       - run: pnpm --filter @otask/contracts check

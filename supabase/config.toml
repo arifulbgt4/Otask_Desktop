@@ -28,6 +28,12 @@ verify_jwt = true
 [functions.revoke-device]
 verify_jwt = true
 
+[functions.issue-run-grant]
+verify_jwt = true
+
+[functions.consume-run-grant]
+verify_jwt = true
+
 [api]
 enabled = true
 port = 54321
