@@ -1,23 +1,23 @@
 {
   "spec_version": "1.0",
   "phase": "P02_SUPABASE_BACKEND_IDENTITY",
-  "current_task": "P02-001",
+  "current_task": "P02-002",
   "task_status": "in_progress",
-  "last_completed_task": "P01-008",
+  "last_completed_task": "P02-001",
   "branch": "task/P02-001-identity-devices-rls",
-  "last_commit": "23a4dca",
+  "last_commit": "1996fc4",
   "required_checks": {
-    "contracts": "pending",
-    "web": "pending",
-    "rust": "pending",
+    "contracts": "success",
+    "web": "success",
+    "rust": "success",
     "desktop": "not_applicable",
-    "mobile": "pending",
-    "supabase": "pending",
-    "security": "pending"
+    "mobile": "success",
+    "supabase": "success",
+    "security": "success"
   },
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": ["P02-001"],
-  "updated_at": "2026-07-13T22:15:00+06:00"
+  "next_ready_tasks": ["P02-002"],
+  "updated_at": "2026-07-13T23:00:00+06:00"
 }

@@ -122,6 +122,12 @@
 - Next action: inspect the remote Supabase/Rust/Mobile/Contracts/Web/Security
   checks, then close P02-001 or fix the migration/test failure.
 
+## 2026-07-13 — P02-001 complete
+
+- All six required checks for `1996fc4` passed; Supabase pgTAP tests and reset
+  completed successfully.
+- P02-001 is done; state now points to `P02-002`.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
