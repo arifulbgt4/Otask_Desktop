@@ -7,8 +7,8 @@
     "build": "node ../../scripts/empty-check.mjs",
     "typecheck": "node ../../scripts/empty-check.mjs",
     "lint": "node ../../scripts/empty-check.mjs",
-    "test": "node scripts/check.mjs",
-    "check": "node scripts/check.mjs"
+    "test": "node scripts/check.mjs && node scripts/check-mappings.mjs",
+    "check": "node scripts/check.mjs && node scripts/check-mappings.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

@@ -10,6 +10,8 @@
   terminal/retry transition fixtures.
 - P01-004: added schedule, approval, device, run-grant, evidence, artifact,
   and text-clipboard schemas with versioned examples.
+- P01-005: added checked TypeScript, Rust, and Dart internal contract mappings
+  with a schema-manifest compatibility guard.
 
 ## Unreleased
 

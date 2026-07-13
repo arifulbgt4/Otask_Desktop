@@ -71,3 +71,12 @@
 
 - All six required checks for `e5e0eb7` passed, including Supabase start/reset.
 - P01-004 is done; state now points to `P01-005`.
+
+## 2026-07-13 — P01-005 implementation
+
+- Branch: `task/P01-005-contract-mappings`.
+- Added TypeScript, Rust, and Dart schema manifests plus execution transition
+  mappings and a guard that prevents schema/mapping drift.
+- Local contracts and mapping checks pass; platform CI is pending.
+- Next action: inspect branch checks, then close P01-005 or fix any
+  platform-specific mapping/format issue before selecting P01-006.

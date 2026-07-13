@@ -31,7 +31,7 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P01-002` Define `TaskPlan` and every v1 step schema with strict additional-property rules. Local schema/graph fixtures and all six required CI jobs pass for `4385afb`.
 - `[DONE] P01-003` Define execution state/event schemas and legal transitions. Local transition fixtures and all six required CI jobs pass for `1d5b8fa`.
 - `[DONE] P01-004` Define schedule, approval, device, grant, evidence, artifact, and clipboard schemas. Local versioned fixtures and all six required CI jobs pass for `e5e0eb7`.
-- `[IN_PROGRESS] P01-005` Generate or test-map TypeScript, Rust, and Dart models.
+- `[IN_PROGRESS] P01-005` Generate or test-map TypeScript, Rust, and Dart models. Manifest guard passes locally; platform CI is pending.
 - `P01-006` Create accessible GUI design tokens and risk/status semantics.
 - `P01-007` Create route/navigation maps and wireframe-level screen states.
 - `P01-008` Add compatibility and fixture tests.
