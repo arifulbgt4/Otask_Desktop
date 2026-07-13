@@ -70,8 +70,11 @@ commit, and green required CI before it is marked `DONE`.
   Final head `8b93125`; native key-provider IPC, process-local WebCrypto
   fallback, capability discovery, authenticated registration, and all six
   required checks passed.
-- `[IN_PROGRESS] P03-005` Create Rust service lifecycle and authenticated local IPC.
-- `P03-006` Create SQLite schema/migrations/repositories.
+- `[DONE] P03-005` Create Rust service lifecycle and authenticated local IPC.
+  Final head `a5415ec`; orderly service lifecycle, restart-safe controller,
+  constant-time local IPC authentication, unauthorized rejection, and all six
+  required checks passed.
+- `[IN_PROGRESS] P03-006` Create SQLite schema/migrations/repositories.
 - `P03-007` Implement Dashboard, Devices, Settings, and Sync Health screens.
 - `P03-008` Implement startup/login behavior per platform.
 - `P03-009` Implement signed updater plumbing in test mode.

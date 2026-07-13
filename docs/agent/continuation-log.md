@@ -315,3 +315,15 @@
   `29257022743`.
 - P03-004 is closed; next task is P03-005, Rust service lifecycle and
   authenticated local IPC.
+
+## 2026-07-13 — P03-005 complete
+
+- Branch: `task/P03-005-service-ipc`.
+- Added the Rust background-service lifecycle controller, orderly/idempotent
+  restart semantics, thread-safe local IPC boundary, constant-time secret
+  comparison, and unauthorized-request rejection before state mutation.
+- Final head `a5415ec` passed Contracts `29259876937`, Web `29259875499`, Rust
+  `29259874516`, Mobile `29259875478`, Supabase `29259875477`, and Security
+  `29259875143`.
+- P03-005 is closed; next task is P03-006, SQLite schema, migrations, and
+  repositories.
