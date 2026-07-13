@@ -155,7 +155,9 @@
 - Added clipboard/sync/notification, signed model/release metadata, model
   installation, learning-resource, and append-only audit tables with RLS,
   retention/public-access constraints, and pgTAP coverage.
-- Remote CI is pending; inspect Supabase test output before closing.
+- All six required checks passed for `1de090f`; Supabase start/reset, pgTAP,
+  and stop completed successfully. P02-004 is closed; next task is P02-005,
+  the cross-user and revoked-device RLS test suite.
 
 ## 2026-07-13 — P01-007 implementation
 

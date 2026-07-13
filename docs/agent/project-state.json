@@ -1,23 +1,23 @@
 {
   "spec_version": "1.0",
   "phase": "P02_SUPABASE_BACKEND_IDENTITY",
-  "current_task": "P02-004",
+  "current_task": "P02-005",
   "task_status": "in_progress",
-  "last_completed_task": "P02-003",
+  "last_completed_task": "P02-004",
   "branch": "task/P02-004-clipboard-model-release",
-  "last_commit": "389f3b4",
+  "last_commit": "1de090f",
   "required_checks": {
-    "contracts": "pending",
-    "web": "pending",
-    "rust": "pending",
+    "contracts": "success",
+    "web": "success",
+    "rust": "success",
     "desktop": "not_applicable",
-    "mobile": "pending",
-    "supabase": "pending",
-    "security": "pending"
+    "mobile": "success",
+    "supabase": "success",
+    "security": "success"
   },
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": ["P02-004"],
-  "updated_at": "2026-07-14T00:30:00+06:00"
+  "next_ready_tasks": ["P02-005"],
+  "updated_at": "2026-07-14T01:10:00+06:00"
 }

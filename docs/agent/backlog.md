@@ -41,8 +41,8 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P02-001` Create profile/device/key/capability migrations and RLS. Migration, pgTAP suite, and all six required CI jobs pass for `1996fc4`.
 - `[DONE] P02-002` Create workflow/version/schedule migrations with immutable-version constraints. Migration/pgTAP suite and all six required CI jobs pass for `dc6ca42`.
 - `[DONE] P02-003` Create run/event/log/artifact/approval/grant migrations. Migration/pgTAP suite and all six required CI jobs pass for `6029b24`.
-- `[IN_PROGRESS] P02-004` Create clipboard/model/release/learning/audit tables.
-- `P02-005` Implement and test RLS for every exposed table.
+- `[DONE] P02-004` Create clipboard/model/release/learning/audit tables. Migration/pgTAP suite and all six required CI jobs pass for `1de090f`.
+- `[IN_PROGRESS] P02-005` Implement and test RLS for every exposed table.
 - `P02-006` Configure Google OAuth for local/dev and callback handling.
 - `P02-007` Implement device registration and pairing challenge functions.
 - `P02-008` Implement key rotation and device revocation.
