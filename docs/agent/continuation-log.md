@@ -183,6 +183,14 @@
   Google account smoke test needs untracked developer credentials and remains
   in the later web/native client tasks. Next task is P02-007.
 
+## 2026-07-14 — P02-007 implementation
+
+- Branch: `task/P02-007-device-registration`.
+- Added hashed pairing challenge storage, register-device and pairing-challenge
+  Edge Functions, validation/hash fixtures, and pgTAP coverage.
+- Remote CI is pending; inspect Supabase and function boundary checks before
+  closing.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.

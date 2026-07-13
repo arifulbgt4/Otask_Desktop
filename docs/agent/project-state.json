@@ -4,8 +4,8 @@
   "current_task": "P02-007",
   "task_status": "in_progress",
   "last_completed_task": "P02-006",
-  "branch": "task/P02-006-google-oauth",
-  "last_commit": "1ed4160",
+  "branch": "task/P02-007-device-registration",
+  "last_commit": "ccf6cf4",
   "required_checks": {
     "contracts": "pending",
     "web": "pending",
@@ -19,5 +19,5 @@
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
   "next_ready_tasks": ["P02-007"],
-  "updated_at": "2026-07-14T03:00:00+06:00"
+  "updated_at": "2026-07-14T03:15:00+06:00"
 }

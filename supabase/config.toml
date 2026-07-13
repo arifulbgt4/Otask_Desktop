@@ -16,6 +16,12 @@ secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET)"
 redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
 skip_nonce_check = false
 
+[functions.register-device]
+verify_jwt = true
+
+[functions.pairing-challenge]
+verify_jwt = true
+
 [api]
 enabled = true
 port = 54321
