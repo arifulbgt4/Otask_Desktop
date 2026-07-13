@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
-    "lint": "node ../../scripts/check-desktop-shell.mjs",
-    "test": "node ../../scripts/check-desktop-shell.mjs"
+    "lint": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs",
+    "test": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.5.0",

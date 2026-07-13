@@ -19,3 +19,7 @@ pnpm --filter @otask/desktop-gui build
 The Tauri configuration uses `http://127.0.0.1:1420` for development and
 `../dist` for packaged frontend assets. Native service and IPC work are kept in
 the later P03 tasks.
+
+Credential names are allowlisted and routed through `SecureCredentialStore`.
+The browser development fallback is process-memory-only; it never writes
+tokens or keys to `localStorage`, cookies, or a plaintext settings file.
