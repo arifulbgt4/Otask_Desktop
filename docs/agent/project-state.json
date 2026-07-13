@@ -4,20 +4,20 @@
   "current_task": "P02-006",
   "task_status": "in_progress",
   "last_completed_task": "P02-005",
-  "branch": "task/P02-005-rls-hardening",
-  "last_commit": "4c53cc3",
+  "branch": "task/P02-006-google-oauth",
+  "last_commit": "1d1d11e",
   "required_checks": {
-    "contracts": "success",
-    "web": "success",
-    "rust": "success",
+    "contracts": "pending",
+    "web": "pending",
+    "rust": "pending",
     "desktop": "not_applicable",
-    "mobile": "success",
-    "supabase": "success",
-    "security": "success"
+    "mobile": "pending",
+    "supabase": "pending",
+    "security": "pending"
   },
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
   "next_ready_tasks": ["P02-006"],
-  "updated_at": "2026-07-14T02:05:00+06:00"
+  "updated_at": "2026-07-14T02:15:00+06:00"
 }

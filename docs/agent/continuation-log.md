@@ -166,6 +166,14 @@
 - P02-005 is closed; next task is P02-006, Google OAuth local/dev callback
   handling.
 
+## 2026-07-14 — P02-006 implementation
+
+- Branch: `task/P02-006-google-oauth`.
+- Added env-backed Supabase Google provider config, exact local web/native
+  redirect allowlists, PKCE callback parsers for JS and Flutter, and config /
+  fixture checks. Live Google credentials remain untracked by design.
+- Remote CI is pending; inspect the auth/config checks before closing.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
