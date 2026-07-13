@@ -80,3 +80,9 @@
 - Local contracts and mapping checks pass; platform CI is pending.
 - Next action: inspect branch checks, then close P01-005 or fix any
   platform-specific mapping/format issue before selecting P01-006.
+
+## 2026-07-13 — P01-005 complete
+
+- Dart formatting was corrected after the first Mobile CI run; the replacement
+  head `15b5dfb` passed all six required checks.
+- P01-005 is done; state now points to `P01-006`.
