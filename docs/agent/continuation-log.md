@@ -174,6 +174,15 @@
   fixture checks. Live Google credentials remain untracked by design.
 - Remote CI is pending; inspect the auth/config checks before closing.
 
+## 2026-07-14 — P02-006 complete
+
+- Final head `1ed4160` passed all six required checks. Supabase started with
+  Google config enabled, reset/pgTAP/stop passed, and Contracts validated the
+  env-backed config and callback fixtures.
+- P02-006 is closed for local/dev configuration and callback boundaries. A real
+  Google account smoke test needs untracked developer credentials and remains
+  in the later web/native client tasks. Next task is P02-007.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.

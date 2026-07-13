@@ -1,11 +1,11 @@
 {
   "spec_version": "1.0",
   "phase": "P02_SUPABASE_BACKEND_IDENTITY",
-  "current_task": "P02-006",
+  "current_task": "P02-007",
   "task_status": "in_progress",
-  "last_completed_task": "P02-005",
+  "last_completed_task": "P02-006",
   "branch": "task/P02-006-google-oauth",
-  "last_commit": "1d1d11e",
+  "last_commit": "1ed4160",
   "required_checks": {
     "contracts": "pending",
     "web": "pending",
@@ -18,6 +18,6 @@
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": ["P02-006"],
-  "updated_at": "2026-07-14T02:15:00+06:00"
+  "next_ready_tasks": ["P02-007"],
+  "updated_at": "2026-07-14T03:00:00+06:00"
 }
