@@ -34,19 +34,52 @@ enum ExecutionState {
   retryQueued,
 }
 
-bool isLegalExecutionTransition(ExecutionState from, ExecutionState to) {
-  return switch ((from, to)) {
-    (ExecutionState.draft, ExecutionState.validated || ExecutionState.rejected) => true,
-    (ExecutionState.validated, ExecutionState.awaitingApproval || ExecutionState.queued) => true,
-    (ExecutionState.awaitingApproval, ExecutionState.queued || ExecutionState.cancelled || ExecutionState.expired) => true,
-    (ExecutionState.queued, ExecutionState.running || ExecutionState.cancelled || ExecutionState.expired) => true,
-    (ExecutionState.running, ExecutionState.success || ExecutionState.failed || ExecutionState.cancelled || ExecutionState.timeout) => true,
-    (ExecutionState.success, ExecutionState.evidenceFinalized) => true,
-    (ExecutionState.failed, ExecutionState.evidenceFinalized || ExecutionState.retryQueued) => true,
-    (ExecutionState.cancelled, ExecutionState.evidenceFinalized) => true,
-    (ExecutionState.timeout, ExecutionState.evidenceFinalized || ExecutionState.retryQueued) => true,
-    (ExecutionState.evidenceFinalized, ExecutionState.synced) => true,
-    (ExecutionState.retryQueued, ExecutionState.queued || ExecutionState.cancelled || ExecutionState.expired) => true,
-    _ => false,
-  };
-}
+const Map<ExecutionState, Set<ExecutionState>> executionTransitions =
+    <ExecutionState, Set<ExecutionState>>{
+  ExecutionState.draft: <ExecutionState>{
+    ExecutionState.validated,
+    ExecutionState.rejected,
+  },
+  ExecutionState.validated: <ExecutionState>{
+    ExecutionState.awaitingApproval,
+    ExecutionState.queued,
+  },
+  ExecutionState.awaitingApproval: <ExecutionState>{
+    ExecutionState.queued,
+    ExecutionState.cancelled,
+    ExecutionState.expired,
+  },
+  ExecutionState.queued: <ExecutionState>{
+    ExecutionState.running,
+    ExecutionState.cancelled,
+    ExecutionState.expired,
+  },
+  ExecutionState.running: <ExecutionState>{
+    ExecutionState.success,
+    ExecutionState.failed,
+    ExecutionState.cancelled,
+    ExecutionState.timeout,
+  },
+  ExecutionState.success: <ExecutionState>{ExecutionState.evidenceFinalized},
+  ExecutionState.failed: <ExecutionState>{
+    ExecutionState.evidenceFinalized,
+    ExecutionState.retryQueued,
+  },
+  ExecutionState.cancelled: <ExecutionState>{ExecutionState.evidenceFinalized},
+  ExecutionState.timeout: <ExecutionState>{
+    ExecutionState.evidenceFinalized,
+    ExecutionState.retryQueued,
+  },
+  ExecutionState.evidenceFinalized: <ExecutionState>{ExecutionState.synced},
+  ExecutionState.synced: <ExecutionState>{},
+  ExecutionState.rejected: <ExecutionState>{},
+  ExecutionState.expired: <ExecutionState>{},
+  ExecutionState.retryQueued: <ExecutionState>{
+    ExecutionState.queued,
+    ExecutionState.cancelled,
+    ExecutionState.expired,
+  },
+};
+
+bool isLegalExecutionTransition(ExecutionState from, ExecutionState to) =>
+    executionTransitions[from]?.contains(to) ?? false;
