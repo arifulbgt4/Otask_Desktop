@@ -36,6 +36,48 @@ export type EventEnvelope = {
 
 export const CONTRACT_SCHEMA_VERSION = "1.0" as const;
 
+export type ExecutionState =
+  | "draft"
+  | "validated"
+  | "awaiting_approval"
+  | "queued"
+  | "running"
+  | "success"
+  | "failed"
+  | "cancelled"
+  | "timeout"
+  | "evidence_finalized"
+  | "synced"
+  | "rejected"
+  | "expired"
+  | "retry_queued";
+
+export const EXECUTION_TRANSITIONS: Readonly<
+  Record<ExecutionState, readonly ExecutionState[]>
+> = {
+  draft: ["validated", "rejected"],
+  validated: ["awaiting_approval", "queued"],
+  awaiting_approval: ["queued", "cancelled", "expired"],
+  queued: ["running", "cancelled", "expired"],
+  running: ["success", "failed", "cancelled", "timeout"],
+  success: ["evidence_finalized"],
+  failed: ["evidence_finalized", "retry_queued"],
+  cancelled: ["evidence_finalized"],
+  timeout: ["evidence_finalized", "retry_queued"],
+  evidence_finalized: ["synced"],
+  synced: [],
+  rejected: [],
+  expired: [],
+  retry_queued: ["queued", "cancelled", "expired"],
+};
+
+export function isLegalExecutionTransition(
+  from: ExecutionState,
+  to: ExecutionState,
+): boolean {
+  return EXECUTION_TRANSITIONS[from].includes(to);
+}
+
 export function asOTaskId(value: string): OTaskId {
   return value as OTaskId;
 }

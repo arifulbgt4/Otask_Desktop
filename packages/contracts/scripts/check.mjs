@@ -13,6 +13,27 @@ const fixtureDir = join(root, "..", "fixtures");
 const ajv = new Ajv({ allErrors: true, strict: true, strictTypes: false });
 addFormats(ajv);
 
+const executionTransitions = {
+  draft: ["validated", "rejected"],
+  validated: ["awaiting_approval", "queued"],
+  awaiting_approval: ["queued", "cancelled", "expired"],
+  queued: ["running", "cancelled", "expired"],
+  running: ["success", "failed", "cancelled", "timeout"],
+  success: ["evidence_finalized"],
+  failed: ["evidence_finalized", "retry_queued"],
+  cancelled: ["evidence_finalized"],
+  timeout: ["evidence_finalized", "retry_queued"],
+  evidence_finalized: ["synced"],
+  synced: [],
+  rejected: [],
+  expired: [],
+  retry_queued: ["queued", "cancelled", "expired"],
+};
+
+function isLegalExecutionTransition(from, to) {
+  return executionTransitions[from]?.includes(to) ?? false;
+}
+
 const schemaFiles = (await readdir(schemaDir)).filter((file) =>
   file.endsWith(".json"),
 );
@@ -60,6 +81,24 @@ for (const file of fixtureFiles) {
   const validate = ajv.getSchema(fixture.schema);
   if (!validate) throw new Error(`${file}: unknown schema ${fixture.schema}`);
   let valid = validate(fixture.value);
+  if (
+    valid &&
+    fixture.schema === "execution-event.schema.json" &&
+    fixture.value.from_state !== undefined
+  ) {
+    valid = isLegalExecutionTransition(
+      fixture.value.from_state,
+      fixture.value.to_state,
+    );
+  }
+  if (
+    fixture.schema === "execution-state.schema.json" &&
+    Array.isArray(fixture.transitions)
+  ) {
+    valid = fixture.transitions.every((transition) =>
+      isLegalExecutionTransition(transition.from, transition.to),
+    );
+  }
   if (valid && fixture.schema === "task-plan.schema.json") {
     const invariantError = validateTaskPlanInvariants(fixture.value);
     valid = invariantError === null;

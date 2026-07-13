@@ -43,3 +43,12 @@
 - All six required checks for `4385afb` passed, including the Supabase local
   start/reset/stop job.
 - P01-002 is done; state now points to `P01-003`.
+
+## 2026-07-13 — P01-003 implementation
+
+- Branch: `task/P01-003-execution-state-events`.
+- Added execution state/event schemas, TypeScript transition table, legal
+  transition helper, and positive/negative fixtures.
+- Local contract validation passes; remote CI is pending.
+- Next action: inspect branch checks, then close P01-003 or fix the state
+  boundary before selecting P01-004.
