@@ -1,0 +1,15 @@
+{
+  "schema": "event-envelope.schema.json",
+  "valid": true,
+  "value": {
+    "event_id": "event_01JTEST00000001",
+    "event_type": "run.state.changed",
+    "aggregate_type": "run",
+    "aggregate_id": "run_01JTEST00000001",
+    "revision": 4,
+    "occurred_at": "2026-07-13T08:00:00.123Z",
+    "producer": "desktop",
+    "trace_id": "trace_01JTEST00000001",
+    "payload": { "from": "queued", "to": "running" }
+  }
+}
