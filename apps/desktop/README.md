@@ -23,3 +23,7 @@ the later P03 tasks.
 Credential names are allowlisted and routed through `SecureCredentialStore`.
 The browser development fallback is process-memory-only; it never writes
 tokens or keys to `localStorage`, cookies, or a plaintext settings file.
+
+Native sign-in uses the system browser with an expiring PKCE transaction. The
+desktop client accepts only the configured callback URI, exchanges the code,
+refreshes sessions, and clears both secure credentials on sign-out.

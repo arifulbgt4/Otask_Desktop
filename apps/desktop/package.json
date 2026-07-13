@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
-    "lint": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs",
-    "test": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs"
+    "lint": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs && node ../../scripts/check-desktop-auth.mjs",
+    "test": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs && node ../../scripts/check-desktop-auth.mjs"
   },
   "dependencies": {
+    "@otask/auth": "workspace:*",
     "@tauri-apps/api": "^2.5.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
