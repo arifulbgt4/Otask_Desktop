@@ -24,6 +24,9 @@
   versions, target binding, owner/device RLS, and pgTAP tests.
 - P02-003: added execution run/event/log/artifact/approval/grant migrations,
   sequence/hash/expiry constraints, owner RLS, and pgTAP tests.
+- P02-004: added clipboard/sync/notification, signed model and release
+  metadata, model installation, learning-resource, and append-only audit
+  migrations with RLS and pgTAP tests.
 
 ## Unreleased
 

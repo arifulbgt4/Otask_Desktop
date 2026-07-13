@@ -149,6 +149,14 @@
 - All six required checks passed for `6029b24`; Supabase reset and pgTAP
   suites passed. P02-003 is closed; next task is P02-004.
 
+## 2026-07-14 — P02-004 implementation
+
+- Branch: `task/P02-004-clipboard-model-release`.
+- Added clipboard/sync/notification, signed model/release metadata, model
+  installation, learning-resource, and append-only audit tables with RLS,
+  retention/public-access constraints, and pgTAP coverage.
+- Remote CI is pending; inspect Supabase test output before closing.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.
