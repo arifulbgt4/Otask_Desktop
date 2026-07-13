@@ -243,3 +243,16 @@
 - All local workspace checks and formatting pass; remote CI is pending.
 - Next action: inspect branch checks, then close P01-006 or fix any token/CI
   issue before selecting P01-007.
+
+## 2026-07-13 — P02-011 complete
+
+- Branch: `task/P02-011-release-downloads`.
+- Added the service-only published release metadata gate and anonymous
+  signed-download URL Edge Function backed by private Storage objects.
+- Corrected PostgreSQL storage-reference regex bounds and the revoked release
+  runtime fixture after the first Supabase CI pass exposed both constraints.
+- Final head `08d91de` passed Contracts `29251766577`, Web `29251766441`, Rust
+  `29251766460`, Mobile `29251766471`, Supabase `29251766528`, and Security
+  `29251766440`.
+- P02-011 is closed; next task is P02-012, the local reset/seed/RLS/Edge
+  Function CI suite.

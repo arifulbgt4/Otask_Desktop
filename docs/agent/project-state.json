@@ -1,23 +1,23 @@
 {
   "spec_version": "1.0",
   "phase": "P02_SUPABASE_BACKEND_IDENTITY",
-  "current_task": "P02-011",
+  "current_task": "P02-012",
   "task_status": "in_progress",
-  "last_completed_task": "P02-010",
+  "last_completed_task": "P02-011",
   "branch": "task/P02-011-release-downloads",
-  "last_commit": "b29389c",
+  "last_commit": "08d91de",
   "required_checks": {
-    "contracts": "pending",
-    "web": "pending",
-    "rust": "pending",
+    "contracts": "success",
+    "web": "success",
+    "rust": "success",
     "desktop": "not_applicable",
-    "mobile": "pending",
-    "supabase": "pending",
-    "security": "pending"
+    "mobile": "success",
+    "supabase": "success",
+    "security": "success"
   },
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": ["P02-010"],
-  "updated_at": "2026-07-14T07:35:00+06:00"
+  "next_ready_tasks": ["P02-012"],
+  "updated_at": "2026-07-13T19:00:00+06:00"
 }
