@@ -1,0 +1,25 @@
+{
+  "schema": "task-plan.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "plan_id": "plan_01JTEST00000001",
+    "version": 1,
+    "title": "Invalid plan",
+    "target": { "device_id": "device_01JTEST00000001" },
+    "approval_mode": "none",
+    "timeout_seconds": 60,
+    "steps": [
+      {
+        "id": "workspace",
+        "type": "open_workspace",
+        "parameters": {
+          "workspace_ref": "workspace_01JTEST00000001",
+          "raw_path": "/tmp"
+        },
+        "success_criteria": { "path_exists": true }
+      }
+    ],
+    "model_can_execute": true
+  }
+}
