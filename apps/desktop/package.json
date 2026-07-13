@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
-    "lint": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs && node ../../scripts/check-desktop-auth.mjs && node ../../scripts/check-device-key-client.mjs",
-    "test": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs && node ../../scripts/check-desktop-auth.mjs && node ../../scripts/check-device-key-client.mjs"
+    "lint": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs && node ../../scripts/check-desktop-auth.mjs && node ../../scripts/check-device-key-client.mjs && node ../../scripts/check-service-ipc.mjs",
+    "test": "node ../../scripts/check-desktop-shell.mjs && node ../../scripts/check-secure-settings.mjs && node ../../scripts/check-desktop-auth.mjs && node ../../scripts/check-device-key-client.mjs && node ../../scripts/check-service-ipc.mjs"
   },
   "dependencies": {
     "@otask/auth": "workspace:*",

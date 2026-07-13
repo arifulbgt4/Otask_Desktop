@@ -4,6 +4,9 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 
+[dependencies]
+otask-service = { path = "../../../crates/otask-service" }
+
 [[bin]]
 name = "otask-desktop"
 path = "src/main.rs"
