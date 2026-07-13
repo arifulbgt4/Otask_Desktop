@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/approval.schema.json",
+  "title": "OTask approval decision",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "approval_id",
+    "run_id",
+    "decision",
+    "scope",
+    "plan_hash",
+    "decided_at",
+    "expires_at",
+    "revoked",
+    "revision"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "approval_id": {
+      "type": "string",
+      "pattern": "^approval_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^run_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "decision": { "enum": ["approved", "rejected"] },
+    "scope": { "enum": ["run", "plan_version", "step"] },
+    "step_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{0,47}$" },
+    "plan_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "decided_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "revoked": { "type": "boolean" },
+    "reason": { "type": "string", "maxLength": 500 },
+    "revision": { "$ref": "common.schema.json#/$defs/revision" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "scope": { "const": "step" } } },
+      "then": { "required": ["step_id"], "properties": { "step_id": {} } }
+    }
+  ],
+  "additionalProperties": false
+}
