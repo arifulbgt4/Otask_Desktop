@@ -172,3 +172,19 @@ comment on policy execution_runs_insert_own on public.execution_runs is 'Only ac
 comment on policy approvals_insert_own on public.approvals is 'Approvals cannot be issued for a revoked target device.';
 comment on policy clipboard_items_insert_own on public.clipboard_items is 'Clipboard writes require an active owner device.';
 comment on policy clipboard_heads_insert_own on public.clipboard_heads is 'Clipboard pointer writes require an active owner device.';
+
+-- RLS filters rows; these grants define which authenticated roles may attempt
+-- an operation. Service-owned tables intentionally receive no client write
+-- grants, so their policies cannot be bypassed by an API client.
+grant select on all tables in schema public to authenticated;
+grant select on public.model_packages, public.release_artifacts, public.learning_resources to anon;
+grant update on public.profiles to authenticated;
+grant insert, update, delete on public.devices to authenticated;
+grant insert, update, delete on public.workflows to authenticated;
+grant insert on public.workflow_versions to authenticated;
+grant insert, update, delete on public.schedules to authenticated;
+grant insert on public.execution_runs to authenticated;
+grant insert on public.approvals to authenticated;
+grant insert, update on public.clipboard_items to authenticated;
+grant insert, update on public.clipboard_heads to authenticated;
+grant update on public.notifications to authenticated;
