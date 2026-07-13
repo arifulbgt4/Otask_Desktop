@@ -141,6 +141,13 @@
   passed after reset.
 - P02-002 is done; state now points to `P02-003`.
 
+## 2026-07-14 — P02-003 implementation
+
+- Branch: `task/P02-003-run-evidence-grants`.
+- Added run/event/log/artifact/approval/grant schema and RLS migration with
+  append-only/sequence/hash/expiry constraints and pgTAP tests.
+- Remote CI is pending; inspect Supabase test output before closing.
+
 ## 2026-07-13 — P01-007 implementation
 
 - Branch: `task/P01-007-route-maps`.

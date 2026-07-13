@@ -22,6 +22,8 @@
   owner-scoped RLS, and pgTAP policy tests.
 - P02-002: added workflow/version/schedule migrations with immutable plan
   versions, target binding, owner/device RLS, and pgTAP tests.
+- P02-003: added execution run/event/log/artifact/approval/grant migrations,
+  sequence/hash/expiry constraints, owner RLS, and pgTAP tests.
 
 ## Unreleased
 
