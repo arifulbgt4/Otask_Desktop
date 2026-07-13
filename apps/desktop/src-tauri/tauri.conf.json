@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "OTask",
+  "version": "0.1.0",
+  "identifier": "com.otask.desktop",
+  "build": {
+    "beforeDevCommand": "pnpm --filter @otask/desktop-gui dev",
+    "beforeBuildCommand": "pnpm --filter @otask/desktop-gui build",
+    "devUrl": "http://127.0.0.1:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "OTask Desktop",
+        "width": 1280,
+        "height": 820,
+        "minWidth": 960,
+        "minHeight": 640,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self' http://127.0.0.1:1420; connect-src 'self' http://127.0.0.1:1420 ws://127.0.0.1:1420; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
+    }
+  },
+  "bundle": { "active": false, "targets": "all" }
+}

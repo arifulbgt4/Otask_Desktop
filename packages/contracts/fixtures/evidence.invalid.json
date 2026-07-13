@@ -1,0 +1,16 @@
+{
+  "schema": "evidence.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "evidence_id": "evidence_01JTEST00000001",
+    "run_id": "run_01JTEST00000001",
+    "manifest_hash": "bad",
+    "signature": "unsigned",
+    "status": "finalized",
+    "artifact_ids": [],
+    "redaction_applied": false,
+    "created_at": "2026-07-13T09:00:00Z",
+    "finalized_at": null
+  }
+}

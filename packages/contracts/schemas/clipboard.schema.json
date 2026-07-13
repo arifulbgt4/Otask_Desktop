@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/clipboard.schema.json",
+  "title": "OTask text clipboard item",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "clipboard_id",
+    "device_id",
+    "content_hash",
+    "sensitivity",
+    "payload_ref",
+    "expires_at",
+    "pinned",
+    "deleted",
+    "revision"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "clipboard_id": {
+      "type": "string",
+      "pattern": "^clipboard_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "device_id": {
+      "type": "string",
+      "pattern": "^device_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "content_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sensitivity": { "enum": ["public", "internal", "sensitive"] },
+    "payload_ref": {
+      "type": "string",
+      "pattern": "^storage://clipboard/[A-Za-z0-9._/-]{1,512}$"
+    },
+    "expires_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "pinned": { "type": "boolean" },
+    "deleted": { "type": "boolean" },
+    "revision": { "$ref": "common.schema.json#/$defs/revision" }
+  },
+  "additionalProperties": false
+}
