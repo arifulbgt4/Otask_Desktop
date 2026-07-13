@@ -1,0 +1,25 @@
+{
+  "spec_version": "1.0",
+  "phase": "P00_GOVERNANCE_BOOTSTRAP",
+  "current_task": "P00-010",
+  "task_status": "in_progress",
+  "last_completed_task": "P00-009",
+  "branch": "master",
+  "last_commit": null,
+  "required_checks": {
+    "contracts": "success",
+    "web": "success",
+    "rust": "blocked",
+    "desktop": "pending",
+    "mobile": "blocked",
+    "supabase": "blocked",
+    "security": "success"
+  },
+  "blockers": [
+    "Rust/Cargo is not installed in the current environment.",
+    "Flutter is not installed in the current environment.",
+    "Supabase CLI is not installed in the current environment."
+  ],
+  "next_ready_tasks": [],
+  "updated_at": "2026-07-13T00:00:00+06:00"
+}

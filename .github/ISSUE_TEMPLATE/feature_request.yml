@@ -1,0 +1,21 @@
+name: Feature request
+description: Propose a change with scope and acceptance criteria.
+title: "[feature] "
+labels: [enhancement]
+body:
+  - type: input
+    id: task_id
+    attributes:
+      label: Backlog task ID
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true

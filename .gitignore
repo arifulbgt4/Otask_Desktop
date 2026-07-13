@@ -1,0 +1,49 @@
+# JavaScript / pnpm / Turborepo
+node_modules/
+.pnpm-store/
+.turbo/
+coverage/
+dist/
+build/
+.next/
+*.tsbuildinfo
+
+# Rust
+target/
+
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+**/ios/Pods/
+**/android/.gradle/
+**/android/local.properties
+
+# Local services and environments
+.env
+.env.*
+!.env.example
+.supabase/
+.docker/
+*.sqlite
+*.sqlite3
+*.db
+
+# OTask sensitive/generated data
+models/weights/
+models/**/*.gguf
+models/**/*.safetensors
+docs/evidence/**/raw/
+*.log
+*.pem
+*.p12
+*.pfx
+*.key
+*.mobileprovision
+*.keystore
+*.jks
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/settings.json

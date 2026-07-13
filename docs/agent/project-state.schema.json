@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OTaskProjectState",
+  "type": "object",
+  "required": [
+    "spec_version",
+    "phase",
+    "current_task",
+    "task_status",
+    "last_completed_task",
+    "required_checks",
+    "blockers",
+    "next_ready_tasks",
+    "updated_at"
+  ],
+  "properties": {
+    "spec_version": { "type": "string" },
+    "phase": { "type": "string" },
+    "current_task": { "type": ["string", "null"] },
+    "task_status": { "enum": ["ready", "in_progress", "done", "blocked"] },
+    "last_completed_task": { "type": ["string", "null"] },
+    "branch": { "type": "string" },
+    "last_commit": { "type": ["string", "null"] },
+    "required_checks": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": ["pending", "success", "failure", "blocked", "not_applicable"]
+      }
+    },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "next_ready_tasks": { "type": "array", "items": { "type": "string" } },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

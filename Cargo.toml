@@ -1,0 +1,20 @@
+[workspace]
+resolver = "2"
+members = [
+  "apps/desktop/src-tauri",
+  "crates/otask-domain",
+  "crates/otask-executor",
+  "crates/otask-policy",
+  "crates/otask-scheduler",
+  "crates/otask-sync",
+  "crates/otask-evidence",
+  "crates/otask-model",
+  "crates/otask-platform",
+  "crates/otask-service"
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Ariful Islam"]

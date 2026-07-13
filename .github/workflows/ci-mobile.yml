@@ -1,0 +1,24 @@
+name: Mobile
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  flutter:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - working-directory: apps/mobile
+        run: flutter pub get
+      - working-directory: apps/mobile
+        run: dart format --output=none --set-exit-if-changed .
+      - working-directory: apps/mobile
+        run: flutter analyze
+      - working-directory: apps/mobile
+        run: flutter test

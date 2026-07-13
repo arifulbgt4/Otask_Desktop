@@ -1,0 +1,13 @@
+{
+  "name": "@otask/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/empty-check.mjs",
+    "typecheck": "node ../../scripts/empty-check.mjs",
+    "lint": "node ../../scripts/empty-check.mjs",
+    "test": "node ../../scripts/empty-check.mjs",
+    "check": "node ../../scripts/empty-check.mjs"
+  }
+}

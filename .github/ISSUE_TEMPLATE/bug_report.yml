@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible OTask defect.
+title: "[bug] "
+labels: [bug]
+body:
+  - type: input
+    id: task_id
+    attributes:
+      label: Task ID
+      description: Related backlog task, if known.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Steps, expected behavior, actual behavior, and platform.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs or screenshots with secrets and personal data removed.
