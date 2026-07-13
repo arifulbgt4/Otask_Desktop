@@ -1,0 +1,135 @@
+{
+  "schema": "task-plan.schema.json",
+  "valid": true,
+  "value": {
+    "schema_version": "1.0",
+    "plan_id": "plan_01JTEST00000001",
+    "version": 1,
+    "title": "Start a local workspace",
+    "target": { "device_id": "device_01JTEST00000001" },
+    "approval_mode": "first_run_and_risk_change",
+    "timeout_seconds": 600,
+    "steps": [
+      {
+        "id": "workspace",
+        "type": "open_workspace",
+        "parameters": { "workspace_ref": "workspace_01JTEST00000001" },
+        "success_criteria": { "path_exists": true }
+      },
+      {
+        "id": "application",
+        "type": "open_application",
+        "depends_on": ["workspace"],
+        "parameters": { "application_id": "vscode" },
+        "success_criteria": { "launch_requested": true }
+      },
+      {
+        "id": "template",
+        "type": "run_command_template",
+        "depends_on": ["application"],
+        "parameters": {
+          "template_ref": "template_01JTEST00000001",
+          "workspace_ref": "workspace_01JTEST00000001",
+          "arguments": { "mode": "dev", "verbose": false }
+        },
+        "success_criteria": { "process_started": true },
+        "evidence": {
+          "capture_stdout": true,
+          "capture_stderr": true,
+          "redact": true
+        }
+      },
+      {
+        "id": "package-script",
+        "type": "run_package_script",
+        "depends_on": ["template"],
+        "parameters": {
+          "workspace_ref": "workspace_01JTEST00000001",
+          "package_manager": "pnpm",
+          "script": "dev"
+        },
+        "success_criteria": { "process_started": true }
+      },
+      {
+        "id": "port",
+        "type": "wait_port",
+        "depends_on": ["package-script"],
+        "parameters": {
+          "host": "127.0.0.1",
+          "port": 3000,
+          "expected_http_status": 200
+        },
+        "success_criteria": { "reachable": true },
+        "timeout_seconds": 120
+      },
+      {
+        "id": "process",
+        "type": "wait_process",
+        "depends_on": ["package-script"],
+        "parameters": {
+          "process_ref": "process_01JTEST00000001",
+          "expected_state": "running"
+        },
+        "success_criteria": { "state_reached": true }
+      },
+      {
+        "id": "file",
+        "type": "wait_file",
+        "depends_on": ["workspace"],
+        "parameters": {
+          "path_ref": "path_01JTEST00000001",
+          "condition": "exists"
+        },
+        "success_criteria": { "exists": true }
+      },
+      {
+        "id": "url",
+        "type": "open_url",
+        "depends_on": ["port"],
+        "parameters": { "url": "http://localhost:3000" },
+        "success_criteria": { "launch_requested": true }
+      },
+      {
+        "id": "clipboard",
+        "type": "copy_clipboard",
+        "depends_on": ["url"],
+        "parameters": {
+          "text": "OTask ready",
+          "sensitivity": "public",
+          "confirm_sensitive": false
+        },
+        "success_criteria": { "copied": true }
+      },
+      {
+        "id": "notify",
+        "type": "notify",
+        "depends_on": ["url"],
+        "parameters": {
+          "title": "OTask",
+          "message": "Workspace is ready",
+          "channel": "local"
+        },
+        "success_criteria": { "delivered": true }
+      },
+      {
+        "id": "delay",
+        "type": "delay",
+        "depends_on": ["notify"],
+        "parameters": { "duration_seconds": 1 },
+        "success_criteria": { "elapsed": true }
+      },
+      {
+        "id": "artifact",
+        "type": "collect_artifact",
+        "depends_on": ["delay"],
+        "parameters": {
+          "artifact_ref": "artifact_01JTEST00000001",
+          "kind": "log",
+          "max_bytes": 1048576,
+          "redact": true
+        },
+        "success_criteria": { "captured": true }
+      }
+    ]
+  }
+}

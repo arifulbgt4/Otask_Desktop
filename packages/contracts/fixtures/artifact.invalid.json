@@ -1,0 +1,16 @@
+{
+  "schema": "artifact.schema.json",
+  "valid": false,
+  "value": {
+    "schema_version": "1.0",
+    "artifact_id": "artifact_01JTEST00000001",
+    "run_id": "run_01JTEST00000001",
+    "kind": "binary",
+    "content_hash": "bad",
+    "size_bytes": -1,
+    "mime_type": "text",
+    "storage_ref": "file:///tmp/raw.log",
+    "redacted": false,
+    "created_at": "not-a-date"
+  }
+}

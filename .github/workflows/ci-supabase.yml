@@ -16,5 +16,6 @@ jobs:
       - run: supabase start
       - run: supabase db reset --local
       - run: test -d supabase/migrations
+      - run: supabase test db
       - if: always()
         run: supabase stop
