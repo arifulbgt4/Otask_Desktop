@@ -87,6 +87,11 @@
   head `15b5dfb` passed all six required checks.
 - P01-005 is done; state now points to `P01-006`.
 
+## 2026-07-13 — P01-006 complete
+
+- All six required checks for `ad705a2` passed.
+- P01-006 is done; state now points to `P01-007`.
+
 ## 2026-07-13 — P01-006 implementation
 
 - Branch: `task/P01-006-design-tokens`.

@@ -1,11 +1,11 @@
 {
   "spec_version": "1.0",
   "phase": "P01_CONTRACTS_DOMAIN_DESIGN",
-  "current_task": "P01-006",
+  "current_task": "P01-007",
   "task_status": "in_progress",
-  "last_completed_task": "P01-005",
-  "branch": "task/P01-005-contract-mappings",
-  "last_commit": "15b5dfb",
+  "last_completed_task": "P01-006",
+  "branch": "task/P01-006-design-tokens",
+  "last_commit": "ad705a2",
   "required_checks": {
     "contracts": "success",
     "web": "success",
@@ -18,6 +18,6 @@
   "blockers": [
     "Rust/Cargo, Flutter, and Supabase CLI are unavailable locally; remote CI is the acceptance evidence for P00."
   ],
-  "next_ready_tasks": ["P01-006"],
-  "updated_at": "2026-07-13T17:15:00+06:00"
+  "next_ready_tasks": ["P01-007"],
+  "updated_at": "2026-07-13T17:45:00+06:00"
 }
