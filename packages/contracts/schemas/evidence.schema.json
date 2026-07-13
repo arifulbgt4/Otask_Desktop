@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otask.dev/schemas/evidence.schema.json",
+  "title": "OTask evidence manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "run_id",
+    "manifest_hash",
+    "signature",
+    "status",
+    "artifact_ids",
+    "redaction_applied",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^evidence_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^run_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+    },
+    "manifest_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "signature": { "type": "string", "pattern": "^[A-Za-z0-9_-]{43,256}$" },
+    "status": { "enum": ["draft", "finalized"] },
+    "artifact_ids": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "pattern": "^artifact_[A-Za-z0-9][A-Za-z0-9_-]{7,95}$"
+      },
+      "uniqueItems": true
+    },
+    "redaction_applied": { "type": "boolean" },
+    "created_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "finalized_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$"
+    }
+  },
+  "additionalProperties": false
+}

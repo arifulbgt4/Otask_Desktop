@@ -16,7 +16,10 @@
     "lint": "pnpm -r --if-present lint",
     "test": "pnpm -r --if-present test",
     "build": "pnpm -r --if-present build",
-    "contracts:check": "pnpm --filter @otask/contracts check"
+    "contracts:check": "pnpm --filter @otask/contracts check",
+    "auth:check": "node scripts/check-auth-config.mjs && pnpm --filter @otask/auth check",
+    "device:check": "node scripts/check-device-functions.mjs",
+    "grant:check": "node scripts/check-grant-functions.mjs"
   },
   "devDependencies": {
     "prettier": "3.6.2",
