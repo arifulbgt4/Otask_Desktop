@@ -12,6 +12,8 @@
   and text-clipboard schemas with versioned examples.
 - P01-005: added checked TypeScript, Rust, and Dart internal contract mappings
   with a schema-manifest compatibility guard.
+- P01-006: added an accessible design-system token package with WCAG contrast,
+  interaction-target, motion, and risk-semantics guards.
 
 ## Unreleased
 

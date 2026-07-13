@@ -86,3 +86,12 @@
 - Dart formatting was corrected after the first Mobile CI run; the replacement
   head `15b5dfb` passed all six required checks.
 - P01-005 is done; state now points to `P01-006`.
+
+## 2026-07-13 — P01-006 implementation
+
+- Branch: `task/P01-006-design-tokens`.
+- Added the `@otask/design-system` token package and automated accessibility /
+  risk-semantic checks.
+- All local workspace checks and formatting pass; remote CI is pending.
+- Next action: inspect branch checks, then close P01-006 or fix any token/CI
+  issue before selecting P01-007.
