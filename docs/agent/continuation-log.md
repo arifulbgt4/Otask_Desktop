@@ -188,8 +188,9 @@
 - Branch: `task/P02-007-device-registration`.
 - Added hashed pairing challenge storage, register-device and pairing-challenge
   Edge Functions, validation/hash fixtures, and pgTAP coverage.
-- Remote CI is pending; inspect Supabase and function boundary checks before
-  closing.
+- All six required checks passed for final head `0717f7d`; Supabase reset and
+  pgTAP suites passed, and Contracts ran the device validation/hash fixtures.
+- P02-007 is closed; next task is P02-008, key rotation and device revocation.
 
 ## 2026-07-13 — P01-007 implementation
 

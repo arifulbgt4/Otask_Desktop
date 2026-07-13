@@ -44,8 +44,8 @@ commit, and green required CI before it is marked `DONE`.
 - `[DONE] P02-004` Create clipboard/model/release/learning/audit tables. Migration/pgTAP suite and all six required CI jobs pass for `1de090f`.
 - `[DONE] P02-005` Implement and test RLS for every exposed table. Policy inventory, two-user runtime fixtures, and all six required CI jobs pass for `4c53cc3`.
 - `[DONE] P02-006` Configure Google OAuth for local/dev and callback handling. Env-backed provider, exact redirect/PKCE callback fixtures, native tests, and all six required CI jobs pass for `1ed4160`.
-- `[IN_PROGRESS] P02-007` Implement device registration and pairing challenge functions.
-- `P02-008` Implement key rotation and device revocation.
+- `[DONE] P02-007` Implement device registration and pairing challenge functions. Same-user Ed25519 proof, hashed expiry/attempt limits, pgTAP, function fixtures, and all six required CI jobs pass for `0717f7d`.
+- `[IN_PROGRESS] P02-008` Implement key rotation and device revocation.
 - `P02-009` Implement signed plan/approval/target-bound run grants.
 - `P02-010` Implement terminal-session initialization/signaling records.
 - `P02-011` Implement release metadata and signed-download URL function.
